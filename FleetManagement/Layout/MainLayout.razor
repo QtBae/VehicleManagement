@@ -6,7 +6,15 @@
 
     <main>
         <div class="top-row px-4">
+            @* language dropdown *@
+            <select class="form-control" @onchange="ChangeLanguage">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                </select>
+
             <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+            
         </div>
 
         <article class="content px-4">
@@ -14,3 +22,9 @@
         </article>
     </main>
 </div>
+@code {
+    private void ChangeLanguage(ChangeEventArgs e)
+    {
+        // throw new NotImplementedException();
+    }
+}
