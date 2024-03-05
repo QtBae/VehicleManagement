@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleManagement", "VehicleManagement\VehicleManagement.csproj", "{D5FDB5BB-7F9C-4E59-B334-70E8F5F7964B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleManagement", "VehicleManagement\VehicleManagement.csproj", "{D5FDB5BB-7F9C-4E59-B334-70E8F5F7964B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{21503440-29DE-400D-B189-0CECE09B53D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{21503440-29DE-400D-B189-0CECE09B53D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleetManagement", "FleetManagement\FleetManagement.csproj", "{14A7EFFD-7977-4203-9715-99F2DAFA595E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APICleanArchi", "Demo\APICleanArchi\APICleanArchi\APICleanArchi.csproj", "{B41F8109-1E8E-4604-9FFF-0109226A3C2C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiCleanArchiDTO", "Demo\APICleanArchi\ApiCleanArchiDTO\ApiCleanArchiDTO.csproj", "{BE7E7D0D-3326-40E2-BCF1-DCAA64DABA6D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{43AF2EC1-708B-4FEE-9E20-0EAEBD6FFF69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +29,25 @@ Global
 		{21503440-29DE-400D-B189-0CECE09B53D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21503440-29DE-400D-B189-0CECE09B53D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21503440-29DE-400D-B189-0CECE09B53D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14A7EFFD-7977-4203-9715-99F2DAFA595E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14A7EFFD-7977-4203-9715-99F2DAFA595E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14A7EFFD-7977-4203-9715-99F2DAFA595E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14A7EFFD-7977-4203-9715-99F2DAFA595E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B41F8109-1E8E-4604-9FFF-0109226A3C2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B41F8109-1E8E-4604-9FFF-0109226A3C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B41F8109-1E8E-4604-9FFF-0109226A3C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B41F8109-1E8E-4604-9FFF-0109226A3C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE7E7D0D-3326-40E2-BCF1-DCAA64DABA6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE7E7D0D-3326-40E2-BCF1-DCAA64DABA6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE7E7D0D-3326-40E2-BCF1-DCAA64DABA6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE7E7D0D-3326-40E2-BCF1-DCAA64DABA6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B41F8109-1E8E-4604-9FFF-0109226A3C2C} = {43AF2EC1-708B-4FEE-9E20-0EAEBD6FFF69}
+		{BE7E7D0D-3326-40E2-BCF1-DCAA64DABA6D} = {43AF2EC1-708B-4FEE-9E20-0EAEBD6FFF69}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {313C3BEC-2CAC-4BA5-8B72-13DA4AE7A25F}

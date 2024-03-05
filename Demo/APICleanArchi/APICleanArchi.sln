@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APICleanArchi", "APICleanArchi\APICleanArchi.csproj", "{E223D309-3E3F-4905-B776-1459BD11CC3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiCleanArchiDTO", "ApiCleanArchiDTO\ApiCleanArchiDTO.csproj", "{946F2B54-3783-4D24-B056-57CD08C02620}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E223D309-3E3F-4905-B776-1459BD11CC3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E223D309-3E3F-4905-B776-1459BD11CC3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E223D309-3E3F-4905-B776-1459BD11CC3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E223D309-3E3F-4905-B776-1459BD11CC3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{946F2B54-3783-4D24-B056-57CD08C02620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{946F2B54-3783-4D24-B056-57CD08C02620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{946F2B54-3783-4D24-B056-57CD08C02620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{946F2B54-3783-4D24-B056-57CD08C02620}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CA0C6B99-6420-4516-8041-64EB97342E6F}
+	EndGlobalSection
+EndGlobal
