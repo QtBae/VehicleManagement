@@ -13,7 +13,7 @@ namespace FleetManagement.Components
 
         protected override void OnInitialized()
         {
-            Vehicles = VehicleServices.GetAllVehicles();
+            Vehicles = VehicleServices.GetAllVehiclesAsync();
         }
     }
 }
