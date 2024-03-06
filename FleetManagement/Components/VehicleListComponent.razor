@@ -1,0 +1,32 @@
+﻿<div class="row">
+    <div class="col-md-12">
+       @*  <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>License Plate</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var vehicle in Vehicles)
+                {
+                    <tr>
+                        <td>@vehicle.Id</td>
+                        <td>@vehicle.Brand.BrandName</td>
+                        <td>@vehicle.Car.Name</td>
+                        <td>@vehicle.Year</td>
+                        <td>@vehicle.LicensePlate</td>
+                        <td>
+                            <button class="btn btn-primary" @onclick="() => EditVehicle(vehicle.Id)">Edit</button>
+                            <button class="btn btn-danger" @onclick="() => DeleteVehicle(vehicle.Id)">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table> *@
+    </div>
+    </div>

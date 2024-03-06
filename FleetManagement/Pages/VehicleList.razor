@@ -1,0 +1,34 @@
+﻿@page "/vehiclelist"
+
+<h3>Vehicle List</h3>
+
+<button class="btn btn-primary" @onclick="AddVehicle">Add Vehicle</button> 
+
+<FleetManagement.Components.VehicleListComponent/>
+
+
+<Modal @ref=@modalRef >
+
+    <ModalContent>
+        <ModalHeader>
+            <ModalTitle>Add Vehicle</ModalTitle>
+        </ModalHeader>
+
+        <ModalBody>
+            <EditForm Model="@Vehicle" OnValidSubmit="SaveVehicle" FormName="Add Vehicle">
+                <DataAnnotationsValidator />
+                <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+                <Field>
+                    <FieldLabel for="Make">Make</FieldLabel>
+                    <FieldBody>
+                        <InputText @bind-Value="Vehicle.LicensePlate" id="LicensePlate" />
+                        <ValidationMessage For="@(() => Vehicle.LicensePlate)" />
+                    </FieldBody>
+                </Field>
+                <button class="btn-primary" type="submit">Save</button>
+            </EditForm>
+        </ModalBody>
+
+    </ModalContent>
+
+</Modal>

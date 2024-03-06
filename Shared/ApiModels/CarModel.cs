@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shared.ApiModels
 {
-    internal class CarModel
+    public class CarModel
     {
         public int Id { get; set; }
 

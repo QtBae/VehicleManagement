@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Shared.ApiModels
 {
-    internal class BrandModel
+    public class BrandModel
     {
         public int Id { get; set; }
-        public int modelId { get; set; }
-        public string brandName { get; set; }
-        public int maintainanceFrequency { get; set; }
-        public Energy energy { get; set; }
+        public CarModel Car { get; set; }
+        public string BrandName { get; set; }
+        public int MaintainanceFrequency { get; set; }
+        public Energy Energy { get; set; }
     }
 }
