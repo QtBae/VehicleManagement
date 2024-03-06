@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Shared.ApiModels
 {
-    internal class VehicleModel
+    public class VehicleModel
     {
         public int Id { get; set; }
-        public int modelId { get; set; }
+        public CarModel Car { get; set; }
 
-        public int brandId { get; set; }
+        public BrandModel Brand { get; set; }
 
-        public string licensePlate { get; set; }
+        public string LicensePlate { get; set; }
 
-        public int year { get; set; }
+        public int Year { get; set; }
 
-        public int mileage { get; set; }
+        public int Mileage { get; set; }
     }
 }

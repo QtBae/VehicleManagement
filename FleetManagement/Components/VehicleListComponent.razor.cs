@@ -1,6 +1,6 @@
 ﻿using FleetManagement.ClientServices;
-using FleetManagement.Models;
 using Microsoft.AspNetCore.Components;
+using Shared.ApiModels;
 
 namespace FleetManagement.Components
 {
@@ -13,7 +13,7 @@ namespace FleetManagement.Components
 
         protected override void OnInitialized()
         {
-            Vehicles = VehicleServices.GetAllVehicles();
+            //Vehicles = VehicleServices.GetAllVehicles();
         }
     }
 }

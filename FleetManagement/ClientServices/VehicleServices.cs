@@ -1,5 +1,5 @@
 ﻿using FleetManagement.Data;
-using FleetManagement.Models;
+using Shared.ApiModels;
 
 namespace FleetManagement.ClientServices
 {

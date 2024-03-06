@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shared
 {
-    internal enum Energy
+    public enum Energy
     {
         Gasoline = 0,
         Diesel = 1,

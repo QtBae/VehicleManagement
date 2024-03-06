@@ -1,5 +1,6 @@
 ﻿using Bogus;
-using FleetManagement.Models;
+using Shared;
+using Shared.ApiModels;
 
 namespace FleetManagement.Data
 {
@@ -9,7 +10,7 @@ namespace FleetManagement.Data
 
         public static IEnumerable<VehicleModel> GetVehicles()
         {
-            GetCarsModels();
+            carModels=GetCarsModels();
             var brands = GetBrands();
 
             var faker = new Faker<VehicleModel>()
@@ -24,17 +25,18 @@ namespace FleetManagement.Data
         }
 
 
-        private static void GetCarsModels()
+        public static IEnumerable<CarModel> GetCarsModels(int nbr=100)
         {
                var faker = new Faker<CarModel>()
                 .RuleFor(c => c.Id, f => f.Random.Int(1, 100))
-                .RuleFor(c => c.Name, f => f.Vehicle.Model());
+                .RuleFor(c => c.Model, f => f.Vehicle.Model());
 
-            carModels= faker.Generate(100);
+            return faker.Generate(nbr);
         }
 
-        private static IEnumerable<BrandModel> GetBrands()
+        public static IEnumerable<BrandModel> GetBrands(int nbr=100)
         {
+            carModels=GetCarsModels();
             var faker = new Faker<BrandModel>()
                 .RuleFor(b => b.Id, f => f.Random.Int(1, 100))
                 .RuleFor(b => b.Car,f => f.PickRandom(carModels))
@@ -42,7 +44,7 @@ namespace FleetManagement.Data
                 .RuleFor(b => b.MaintainanceFrequency,f => f.Random.Int(1,100))
                 .RuleFor(b => b.Energy,f => f.PickRandom<Energy>());
 
-            return faker.Generate(100);
+            return faker.Generate(nbr);
         }   
     }
 }
