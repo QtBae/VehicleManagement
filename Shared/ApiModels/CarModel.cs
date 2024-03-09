@@ -11,5 +11,6 @@ namespace Shared.ApiModels
         public int Id { get; set; }
 
         public string Model { get; set; }
+        public int MaintenanceFrequency { get; set; }
     }
 }

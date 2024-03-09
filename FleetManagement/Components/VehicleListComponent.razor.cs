@@ -11,9 +11,10 @@ namespace FleetManagement.Components
 
         public IEnumerable<VehicleModel> Vehicles { get; set; }
 
-        protected override void OnInitialized()
+
+        protected override async Task OnInitializedAsync()
         {
-            Vehicles = VehicleServices.GetAllVehiclesAsync();
+            Vehicles = await VehicleServices.GetAllVehiclesAsync();
         }
     }
 }
