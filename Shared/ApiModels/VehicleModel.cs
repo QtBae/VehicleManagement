@@ -9,7 +9,7 @@ namespace Shared.ApiModels
 {
     public class VehicleModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public CarModel Car { get; set; }

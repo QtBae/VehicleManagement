@@ -9,7 +9,7 @@ namespace Shared.ApiModels
 {
     public class MaintainanceModel
     {
-        public int Id { get; set; }
+        public int Id { get; set; } 
 
         [Required]
         List<string> Works { get; set; }

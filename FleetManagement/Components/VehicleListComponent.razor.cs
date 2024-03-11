@@ -1,4 +1,5 @@
 ﻿using FleetManagement.ClientServices;
+using FleetManagement.Data;
 using Microsoft.AspNetCore.Components;
 using Shared.ApiModels;
 
@@ -12,9 +13,14 @@ namespace FleetManagement.Components
         public IEnumerable<VehicleModel> Vehicles { get; set; }
 
 
-        protected override async Task OnInitializedAsync()
+        //protected override async Task OnInitializedAsync()
+        //{
+        //    Vehicles = await VehicleServices.GetAllVehiclesAsync();
+        //}
+
+        protected override void OnInitialized()
         {
-            Vehicles = await VehicleServices.GetAllVehiclesAsync();
+            Vehicles = VehicleData.GetVehicles();
         }
     }
 }
