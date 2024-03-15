@@ -56,6 +56,7 @@ namespace FleetManagement.Pages
 
         protected override void OnInitialized()
         {
+
         }
 
     }
