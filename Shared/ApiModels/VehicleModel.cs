@@ -14,7 +14,7 @@ namespace Shared.ApiModels
         [Required]
         public CarModel Model { get; set; }
 
-        List<MaintainanceModel>? Maintainances { get; set; }
+        public List<MaintainanceModel>? Maintainances { get; set; }
 
         [Required]
         public BrandModel? Brand { get; set; }

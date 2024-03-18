@@ -12,7 +12,7 @@ namespace Shared.ApiModels
         public Guid Id { get; set; }
 
         [Required]
-        List<string> Works { get; set; }
+        public string Works { get; set; }
 
         [Required]
         [Range(0, int.MaxValue)]

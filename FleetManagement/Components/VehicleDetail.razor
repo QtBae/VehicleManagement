@@ -1,0 +1,53 @@
+﻿<h3>Vehicle Detail</h3>
+
+<!-- display vehicle details -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3>@Vehicle.LicensePlate</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Brand:</strong> @Vehicle.Brand.BrandName</p>
+                        <p><strong>Model:</strong> @Vehicle.Model.ModelName</p>
+                        <p><strong>Year:</strong> @Vehicle.Year</p>
+                        <p><strong>Mileage:</strong> @Vehicle.Mileage</p>
+                    </div>
+                    <div class="col-md-6">
+                        @if (Vehicle.Maintainances is not null && Vehicle.Maintainances.Any())
+                        {
+                            <h4>Maintenances</h4>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Works</th>
+                                        <th>Cost</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var maintenance in Vehicle.Maintainances)
+                                    {
+                                        <tr>
+                                            <td>@maintenance.Id</td>
+                                            <td>@maintenance.Works</td>
+                                            <td>@maintenance.Mileage</td>
+                                            <td>@maintenance.Date</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <p>No maintenances found</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
