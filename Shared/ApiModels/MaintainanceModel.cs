@@ -9,13 +9,11 @@ namespace Shared.ApiModels
 {
     public class MaintainanceModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
+
         List<string> Works { get; set; }
-
-        [Required]
-        public int Mileage { get; set; }
 
         [Required]
         [DataType(DataType.Date)]

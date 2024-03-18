@@ -9,10 +9,10 @@ namespace Shared.ApiModels
 {
     public class VehicleModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
-        public CarModel Car { get; set; }
+        public CarModel Model { get; set; }
 
         List<MaintainanceModel>? Maintainances { get; set; }
 
@@ -29,5 +29,6 @@ namespace Shared.ApiModels
         [Required]
         [Range(0, int.MaxValue)]
         public int Mileage { get; set; }
+        public Energy Energy { get; set; }
     }
 }
