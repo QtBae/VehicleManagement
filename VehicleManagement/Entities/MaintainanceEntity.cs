@@ -1,6 +1,13 @@
-﻿namespace VehicleManagement.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace VehicleManagement.Entities
 {
     public class MaintainanceEntity
     {
+        public Guid Id { get; set; }
+        List<string> Works { get; set; }
+        public int Mileage { get; set; }
+        public DateTime Date { get; set; }
+        public CarEntity Vehicle { get; set; }
     }
 }

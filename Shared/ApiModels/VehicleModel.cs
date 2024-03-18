@@ -14,7 +14,7 @@ namespace Shared.ApiModels
         [Required]
         public CarModel Model { get; set; }
 
-        public List<MaintainanceModel>? Maintainances { get; set; }
+        List<MaintainanceModel>? Maintainances { get; set; }
 
         [Required]
         public BrandModel? Brand { get; set; }
@@ -26,7 +26,7 @@ namespace Shared.ApiModels
 
         public int Year { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The mileage value must be positive")]
         [Range(0, int.MaxValue)]
         public int Mileage { get; set; }
         public Energy Energy { get; set; }

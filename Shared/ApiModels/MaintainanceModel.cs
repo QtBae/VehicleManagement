@@ -12,8 +12,11 @@ namespace Shared.ApiModels
         public Guid Id { get; set; }
 
         [Required]
-        [Display(Name = "Works done")]
-        public string Works { get; set; }
+        List<string> Works { get; set; }
+
+        [Required]
+        [Range(0, int.MaxValue)]
+        public int Mileage { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
