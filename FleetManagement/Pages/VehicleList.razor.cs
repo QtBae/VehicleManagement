@@ -22,12 +22,12 @@ namespace FleetManagement.Pages
         {
             get
             {
-                if (Vehicle.Car != null) return Vehicle.Brand is not null ? Vehicle.Car.Id : Guid.Empty;
+                if (Vehicle.Model != null) return Vehicle.Brand is not null ? Vehicle.Model.Id : Guid.Empty;
                 return Guid.Empty;
             }
             set
             {
-                Vehicle!.Car = Cars.FirstOrDefault(c => c.Id == value);
+                Vehicle!.Model = Cars.FirstOrDefault(c => c.Id == value);
             }
         }
 

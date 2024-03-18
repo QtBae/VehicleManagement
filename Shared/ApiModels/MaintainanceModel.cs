@@ -12,8 +12,8 @@ namespace Shared.ApiModels
         public Guid Id { get; set; }
 
         [Required]
-
-        List<string> Works { get; set; }
+        [Display(Name = "Works done")]
+        public string Works { get; set; }
 
         [Required]
         [DataType(DataType.Date)]

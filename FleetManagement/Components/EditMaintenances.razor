@@ -1,0 +1,30 @@
+﻿<h3>EditMaintenances</h3>
+
+@* form to edit maintenances *@
+
+<EditForm Model="@_newMaintenance" OnValidSubmit="@AddMaintenance">
+    <DataAnnotationsValidator />
+    <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+
+    <div class="form-group">
+        <label for="LicensePlate" class="form-label">
+            License Plate
+            <InputTextArea id="Work" @bind-Value="_newMaintenance.Works" />
+        </label>
+        <ValidationMessage For="@(() => _newMaintenance.Works)" />
+    </div>
+@* 
+    <div class="form-group">
+        <label for="Year">Year</label>
+        <InputNumber id="Year" @bind-Value="Vehicle.Year" />
+        <ValidationMessage For="@(() => Vehicle.Year)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Mileage">Mileage</label>
+        <InputNumber id="Mileage" @bind-Value="Vehicle.Mileage" />
+        <ValidationMessage For="@(() => Vehicle.Mileage)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button> *@
+</EditForm>
