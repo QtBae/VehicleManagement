@@ -10,7 +10,7 @@ namespace FleetManagement.Components
         [Inject]
         public IVehicleServices VehicleServices { get; set; }
 
-        public IEnumerable<VehicleModel> Vehicles { get; set; }
+        public IEnumerable<VehicleModel?> Vehicles { get; set; }
 
 
         //protected override async Task OnInitializedAsync()

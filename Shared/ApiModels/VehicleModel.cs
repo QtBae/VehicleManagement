@@ -17,7 +17,7 @@ namespace Shared.ApiModels
         List<MaintainanceModel>? Maintainances { get; set; }
 
         [Required]
-        public BrandModel Brand { get; set; }
+        public BrandModel? Brand { get; set; }
 
         [Required]
         [MinLength(7, ErrorMessage = "License plate must be at least 7 characters long")]

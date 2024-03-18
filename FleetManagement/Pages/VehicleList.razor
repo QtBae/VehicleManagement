@@ -8,7 +8,7 @@
 
 <button class="btn btn-primary" @onclick="AddVehicle">Add Vehicle</button> 
 
-<Modal @ref=@modalRef>
+<Modal @ref=@_modalRef>
 
     <ModalContent Size="ModalSize.Large" >
         <ModalHeader>
@@ -71,14 +71,14 @@
             </EditForm> *@
 
 
-            @if (errorMessage != null)
+            @if (_errorMessage != null)
             {
-                <p>@errorMessage</p>
+                <p>@_errorMessage</p>
             }
 
-            @if (successMessage != null)
+            @if (_successMessage != null)
             {
-                <p>@successMessage</p>
+                <p>@_successMessage</p>
             }
 
             <EditForm Model="@Vehicle" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">

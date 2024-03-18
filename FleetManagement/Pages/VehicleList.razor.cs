@@ -7,11 +7,11 @@ namespace FleetManagement.Pages
 {
     public partial class VehicleList
     {
-        private string errorMessage;
-        private string successMessage;
+        private string? _errorMessage;
+        private string? _successMessage;
         public Guid SelectedBrandId
         {
-            get => Vehicle.Brand is not null ? Vehicle.Brand.Id : Guid.Empty;
+            get => Vehicle.Brand?.Id ?? Guid.Empty;
             set
             {
                 Vehicle!.Brand = Brands.FirstOrDefault(b => b.Id == value);
@@ -20,7 +20,11 @@ namespace FleetManagement.Pages
         }
         public Guid SelectedCarId
         {
-            get=> Vehicle.Brand is not null ? Vehicle.Car.Id : Guid.Empty;
+            get
+            {
+                if (Vehicle.Car != null) return Vehicle.Brand is not null ? Vehicle.Car.Id : Guid.Empty;
+                return Guid.Empty;
+            }
             set
             {
                 Vehicle!.Car = Cars.FirstOrDefault(c => c.Id == value);
@@ -29,30 +33,30 @@ namespace FleetManagement.Pages
 
         private async Task HandleValidSubmit()
         {
-            successMessage = "Vehicle saved successfully!";
+            _successMessage = "Vehicle saved successfully!";
         }
 
         private void HandleInvalidSubmit()
         {
-            errorMessage = "Please correct the validation errors.";
+            _errorMessage = "Please correct the validation errors.";
         }
 
         private void AddVehicle(Microsoft.AspNetCore.Components.Web.MouseEventArgs e)
         {
-            modalRef.Show();
+            _modalRef.Show();
         }
 
         private void SaveVehicle()
         {
-            modalRef.Hide();
+            _modalRef.Hide();
         }
 
-        private Modal modalRef;
+        private Modal _modalRef;
 
         VehicleModel Vehicle = new VehicleModel();
         CarModel car;
         IEnumerable<BrandModel> Brands = VehicleData.GetBrands(10);
-        IEnumerable<CarModel> Cars = VehicleData.GetCarsModels(10);
+        IEnumerable<CarModel?> Cars = VehicleData.GetCarsModels(10);
 
         protected override void OnInitialized()
         {

@@ -15,11 +15,17 @@
                 @foreach (var vehicle in Vehicles)
                 {
                     <tr>
-                        <td>@vehicle.Id</td>
-                        <td>@vehicle.Brand.BrandName</td>
-                        <td>@vehicle.Car.Model</td>
-                        <td>@vehicle.Year</td>
-                        <td>@vehicle.LicensePlate</td>
+                        <td>
+                            @if (vehicle != null)
+                            {
+                                @vehicle.Id@:</td>
+                                <td>@vehicle.Brand.BrandName</td>
+                                <td>@vehicle.Car.Model</td>
+                                <td>@vehicle.Year</td>
+                                @:<td>@vehicle.LicensePlate
+                            }
+
+                        </td>
                         @* <td>
                             <button class="btn btn-primary" @onclick="() => EditVehicle(vehicle.Id)">Edit</button>
                             <button class="btn btn-danger" @onclick="() => DeleteVehicle(vehicle.Id)">Delete</button>
