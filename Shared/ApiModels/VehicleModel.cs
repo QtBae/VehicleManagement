@@ -12,12 +12,12 @@ namespace Shared.ApiModels
         public Guid Id { get; set; }
 
         [Required]
-        public CarModel Car { get; set; }
+        public CarModel? Car { get; set; }
 
         List<MaintainanceModel>? Maintainances { get; set; }
 
         [Required]
-        public BrandModel Brand { get; set; }
+        public BrandModel? Brand { get; set; }
 
         [Required]
         [MinLength(7, ErrorMessage = "License plate must be at least 7 characters long")]

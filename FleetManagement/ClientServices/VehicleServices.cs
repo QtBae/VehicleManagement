@@ -4,54 +4,38 @@ using System.Net.Http.Json;
 
 namespace FleetManagement.ClientServices
 {
-    public class VehicleServices:IVehicleServices
+    public class VehicleServices(HttpClient httpClient) : IVehicleServices
     {
-        private readonly HttpClient _httpClient;
-        public VehicleServices(HttpClient httpClient)
-        {
-            _httpClient = httpClient;
-        }
-
-        public async Task<IEnumerable<VehicleModel>> GetAllVehiclesAsync()
+        public async Task<IEnumerable<VehicleModel?>> GetAllVehiclesAsync()
         {
 
             try
             {
-                var response = await _httpClient.GetFromJsonAsync<IEnumerable<VehicleModel>>("api/vehicles");
+                var response = await httpClient.GetFromJsonAsync<IEnumerable<VehicleModel>>("api/vehicles");
 
-                if (!response!.Any())
+                if (response != null)
                 {
-                    return response;
+                    List<VehicleModel?> allVehiclesAsync = response.ToList();
+                    return !allVehiclesAsync!.Any() ? allVehiclesAsync : VehicleData.GetVehicles();
                 }
-                else
-                {
-                    return VehicleData.GetVehicles();
-                }
+                return VehicleData.GetVehicles();
             }
             catch (Exception)
             {
-
                 return VehicleData.GetVehicles();
             }
         }
 
-        public async Task<VehicleModel> GetVehicleByIdAsync(Guid id)
+        public async Task<VehicleModel?> GetVehicleByIdAsync(Guid id)
         {
-            var response = await _httpClient.GetFromJsonAsync<VehicleModel>($"api/vehicles/{id}");
+            var response = await httpClient.GetFromJsonAsync<VehicleModel>($"api/vehicles/{id}");
 
-            if (response != null)
-            {
-                return response;
-            }
-            else
-            {
-                return VehicleData.GetVehicles().FirstOrDefault(v => v.Id == id);
-            }
+            return response ?? VehicleData.GetVehicles().FirstOrDefault(v => v != null && v.Id == id);
         }
 
-        public async Task<VehicleModel> AddVehicleAsync(VehicleModel vehicle)
+        public async Task<VehicleModel?> AddVehicleAsync(VehicleModel vehicle)
         {
-            var response = await _httpClient.PostAsJsonAsync("api/vehicles", vehicle);
+            var response = await httpClient.PostAsJsonAsync("api/vehicles", vehicle);
 
             if (response.IsSuccessStatusCode)
             {
@@ -63,9 +47,9 @@ namespace FleetManagement.ClientServices
             }
         }
 
-        public async Task<VehicleModel> UpdateVehicleAsync(VehicleModel vehicle)
+        public async Task<VehicleModel?> UpdateVehicleAsync(VehicleModel vehicle)
         {
-            var response = await _httpClient.PutAsJsonAsync($"api/vehicles/{vehicle.Id}", vehicle);
+            var response = await httpClient.PutAsJsonAsync($"api/vehicles/{vehicle.Id}", vehicle);
 
             if (response.IsSuccessStatusCode)
             {
@@ -77,13 +61,13 @@ namespace FleetManagement.ClientServices
             }
         }
 
-        public async Task<VehicleModel> DeleteVehicleAsync(VehicleModel vehicle)
+        public async Task<VehicleModel?> DeleteVehicleAsync(VehicleModel? vehicle)
         {
-            var response = await _httpClient.DeleteAsync($"api/vehicles/{vehicle.Id}");
-
-            if (response.IsSuccessStatusCode)
+            if (vehicle != null)
             {
-                return vehicle;
+                var response = await httpClient.DeleteAsync($"api/vehicles/{vehicle.Id}");
+
+                return response.IsSuccessStatusCode ? vehicle : null;
             }
             else
             {
@@ -95,11 +79,11 @@ namespace FleetManagement.ClientServices
 
     public interface IVehicleServices
     {
-        Task<IEnumerable<VehicleModel>> GetAllVehiclesAsync();
-        Task<VehicleModel> GetVehicleByIdAsync(Guid id);
-        Task<VehicleModel> AddVehicleAsync(VehicleModel vehicle);
+        Task<IEnumerable<VehicleModel?>> GetAllVehiclesAsync();
+        Task<VehicleModel?> GetVehicleByIdAsync(Guid id);
+        Task<VehicleModel?> AddVehicleAsync(VehicleModel vehicle);
 
-        Task<VehicleModel> UpdateVehicleAsync(VehicleModel vehicle);
-        Task<VehicleModel> DeleteVehicleAsync(VehicleModel vehicle);
+        Task<VehicleModel?> UpdateVehicleAsync(VehicleModel vehicle);
+        Task<VehicleModel?> DeleteVehicleAsync(VehicleModel? vehicle);
     }
 }
