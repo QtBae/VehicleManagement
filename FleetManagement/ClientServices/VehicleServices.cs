@@ -15,19 +15,27 @@ namespace FleetManagement.ClientServices
         public async Task<IEnumerable<VehicleModel>> GetAllVehiclesAsync()
         {
 
-            var response= await _httpClient.GetFromJsonAsync<IEnumerable<VehicleModel>>("api/vehicles");
+            try
+            {
+                var response = await _httpClient.GetFromJsonAsync<IEnumerable<VehicleModel>>("api/vehicles");
 
-            if (response != null)
-            {
-                return response;
+                if (!response!.Any())
+                {
+                    return response;
+                }
+                else
+                {
+                    return VehicleData.GetVehicles();
+                }
             }
-            else
+            catch (Exception)
             {
+
                 return VehicleData.GetVehicles();
             }
         }
 
-        public async Task<VehicleModel> GetVehicleByIdAsync(int id)
+        public async Task<VehicleModel> GetVehicleByIdAsync(Guid id)
         {
             var response = await _httpClient.GetFromJsonAsync<VehicleModel>($"api/vehicles/{id}");
 
@@ -88,7 +96,7 @@ namespace FleetManagement.ClientServices
     public interface IVehicleServices
     {
         Task<IEnumerable<VehicleModel>> GetAllVehiclesAsync();
-        Task<VehicleModel> GetVehicleByIdAsync(int id);
+        Task<VehicleModel> GetVehicleByIdAsync(Guid id);
         Task<VehicleModel> AddVehicleAsync(VehicleModel vehicle);
 
         Task<VehicleModel> UpdateVehicleAsync(VehicleModel vehicle);
