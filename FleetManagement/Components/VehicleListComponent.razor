@@ -17,7 +17,9 @@
                     <tr>
                         @if (vehicle != null)
                         {
-                            <td>@vehicle.Id</td>
+                            <td>
+                                <a href="/editmaintenances?{@vehicle}">@vehicle.Id</a>}
+                            </td>
                             <td>@vehicle.Brand.BrandName</td>
                             <td>@vehicle.Model.ModelName</td>
                             <td>@vehicle.Year</td>
@@ -34,4 +36,5 @@
             </tbody>
         </table>
     </div>
-    </div>
+    
+</div>

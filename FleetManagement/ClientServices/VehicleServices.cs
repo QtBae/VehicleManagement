@@ -6,12 +6,13 @@ namespace FleetManagement.ClientServices
 {
     public class VehicleServices(HttpClient httpClient) : IVehicleServices
     {
+        private readonly HttpClient _httpClient = httpClient;
         public async Task<IEnumerable<VehicleModel?>> GetAllVehiclesAsync()
         {
 
             try
             {
-                var response = await httpClient.GetFromJsonAsync<IEnumerable<VehicleModel>>("api/vehicles");
+                var response = await _httpClient.GetFromJsonAsync<IEnumerable<VehicleModel>>("api/vehicles");
 
                 if (response != null)
                 {
@@ -28,14 +29,14 @@ namespace FleetManagement.ClientServices
 
         public async Task<VehicleModel?> GetVehicleByIdAsync(Guid id)
         {
-            var response = await httpClient.GetFromJsonAsync<VehicleModel>($"api/vehicles/{id}");
+            var response = await _httpClient.GetFromJsonAsync<VehicleModel>($"api/vehicles/{id}");
 
             return response ?? VehicleData.GetVehicles().FirstOrDefault(v => v != null && v.Id == id);
         }
 
         public async Task<VehicleModel?> AddVehicleAsync(VehicleModel vehicle)
         {
-            var response = await httpClient.PostAsJsonAsync("api/vehicles", vehicle);
+            var response = await _httpClient.PostAsJsonAsync("api/vehicles", vehicle);
 
             if (response.IsSuccessStatusCode)
             {
@@ -49,7 +50,7 @@ namespace FleetManagement.ClientServices
 
         public async Task<VehicleModel?> UpdateVehicleAsync(VehicleModel vehicle)
         {
-            var response = await httpClient.PutAsJsonAsync($"api/vehicles/{vehicle.Id}", vehicle);
+            var response = await _httpClient.PutAsJsonAsync($"api/vehicles/{vehicle.Id}", vehicle);
 
             if (response.IsSuccessStatusCode)
             {
@@ -65,7 +66,7 @@ namespace FleetManagement.ClientServices
         {
             if (vehicle != null)
             {
-                var response = await httpClient.DeleteAsync($"api/vehicles/{vehicle.Id}");
+                var response = await _httpClient.DeleteAsync($"api/vehicles/{vehicle.Id}");
 
                 return response.IsSuccessStatusCode ? vehicle : null;
             }

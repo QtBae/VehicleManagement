@@ -1,22 +1,31 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using FleetManagement.ClientServices;
+using Microsoft.AspNetCore.Components;
 using Shared.ApiModels;
 
 namespace FleetManagement.Components
 {
     public partial class EditMaintenances
     {
-        [CascadingParameter]
-        public VehicleModel Vehicle { get; set; } = new VehicleModel();
+        [Inject]
+        public MaintenanceService MaintenanceService { get; set; }
+        [Parameter]
+        public Guid VehicleId { get; set; }
+        private VehicleModel Vehicle { get; set; }
 
-        private MaintainanceModel _newMaintenance = new MaintainanceModel();
+        [Parameter]
+        public Guid MaintenanceId { get; set; }
+        private  MaintainanceModel Maintenance { get; set; }
 
-        private void AddMaintenance()
+
+        protected async  override Task OnParametersSetAsync()
         {
-            if (Vehicle.Maintainances == null)
-            {
-                Vehicle.Maintainances = [];
-            }
-            Vehicle.Maintainances.Add(_newMaintenance);
+            await base.OnParametersSetAsync();
+            Vehicle = VehicleId != Guid.Empty ? await MaintenanceService.(VehicleId) : new VehicleModel();
         }
+
+        //protected override Task OnParametersSetAsync()
+        //{
+        //    return base.OnParametersSetAsync();
+        //}
     }
 }
