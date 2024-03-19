@@ -50,7 +50,7 @@ namespace VehicleManagement.Services
             return _mapper.Map<VehicleModel>(vehicle);
         }
 
-        public async Task<VehicleModel> CreateVehicleAsync(VehicleModel vehicle)
+        public async Task<VehicleModel?> CreateVehicleAsync(VehicleModel vehicle)
         {
             if (vehicle == null)
             {
@@ -70,7 +70,7 @@ namespace VehicleManagement.Services
             return _mapper.Map<VehicleModel>(createdVehicle);
         }
 
-        public async Task<VehicleModel> UpdateVehicleAsync(VehicleModel vehicle)
+        public async Task<VehicleModel?> UpdateVehicleAsync(VehicleModel vehicle)
         {
             if (vehicle == null)
             {

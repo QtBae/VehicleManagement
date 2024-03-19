@@ -70,7 +70,7 @@ namespace VehicleManagement.Services
             return _mapper.Map<BrandModel>(createdBrand);
         }
 
-        public async Task<BrandModel> UpdateBrandAsync(BrandModel brand)
+        public async Task<BrandModel?> UpdateBrandAsync(BrandModel brand)
         {
             if (brand == null)
             {

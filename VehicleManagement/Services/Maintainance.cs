@@ -70,7 +70,7 @@ namespace VehicleManagement.Services
             return _mapper.Map<MaintainanceModel>(createdMaintainance);
         }
 
-        public async Task<MaintainanceModel> UpdateMaintainanceAsync(MaintainanceModel maintainance)
+        public async Task<MaintainanceModel?> UpdateMaintainanceAsync(MaintainanceModel maintainance)
         {
             if (maintainance == null)
             {

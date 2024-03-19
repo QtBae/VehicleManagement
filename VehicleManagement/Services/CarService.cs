@@ -70,7 +70,7 @@ namespace VehicleManagement.Services
             return _mapper.Map<CarModel>(createdCar);
         }
 
-        public async Task<CarModel> UpdateCarAsync(CarModel car)
+        public async Task<CarModel?> UpdateCarAsync(CarModel car)
         {
             if (car == null)
             {

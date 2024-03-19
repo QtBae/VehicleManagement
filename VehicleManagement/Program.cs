@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using VehicleManagement.Data;
 using VehicleManagement.Profiles;
+using VehicleManagement.Repositories;
 using VehicleManagement.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,10 +22,18 @@ builder.Services.AddScoped<ICarService, CarService>();
 builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<IMaintainanceService, MaintainanceService>();
 
+// register repositories
+builder.Services.AddScoped<IBrandRepository, BrandRepository>();
+builder.Services.AddScoped<ICarRepository, CarRepository>();
+builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
+builder.Services.AddScoped<IMaintainanceRepository, MaintainanceRepository>();
+
 
 // register automapper
 builder.Services.AddAutoMapper(typeof(BrandProfile));
 builder.Services.AddAutoMapper(typeof(CarProfile));
+builder.Services.AddAutoMapper(typeof(VehicleProfile));
+builder.Services.AddAutoMapper(typeof(MaintainanceProfile));
 
 
 var app = builder.Build();
