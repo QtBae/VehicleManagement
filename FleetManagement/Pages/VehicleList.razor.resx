@@ -120,4 +120,31 @@
   <data name="HelloBlaz" xml:space="preserve">
     <value>Hello World</value>
   </data>
+  <data name="VehicleTitle" xml:space="preserve">
+    <value>Vehicles List</value>
+  </data>
+  <data name="Brand" xml:space="preserve">
+    <value>Brand</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="LP" xml:space="preserve">
+    <value>License Plate</value>
+  </data>
+  <data name="Mileage" xml:space="preserve">
+    <value>Mileage</value>
+  </data>
+  <data name="AddVehicleTitle" xml:space="preserve">
+    <value>Edite Vehicle</value>
+  </data>
+  <data name="BtnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="BtnAddVehicle" xml:space="preserve">
+    <value>Add Vehicle</value>
+  </data>
 </root>

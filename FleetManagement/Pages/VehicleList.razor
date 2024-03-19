@@ -4,128 +4,19 @@
 @using Shared.ApiModels
 @inject IStringLocalizer<VehicleList> Localizer
 
-<h3>@Localizer["HelloBlaz"]</h3>
+<h3>@Localizer["VehicleTitle"]</h3>
 
-<button class="btn btn-primary" @onclick="AddVehicle">Add Vehicle</button> 
+<button class="btn btn-primary" @onclick="AddVehicle">
+    @Localizer["BtnAddVehicle"]</button>
 
-<Modal @ref=@_modalRef>
+            <Modal @ref=@_modalRef>
 
-    <ModalContent Size="ModalSize.Large" >
+    <ModalContent Size="ModalSize.Large" Centered>
         <ModalHeader>
-            <ModalTitle>Add Vehicle</ModalTitle>
+            <ModalTitle>@Localizer["AddVehicleTitle"]</ModalTitle>
         </ModalHeader>
         <ModalBody>
-            @* <EditForm Model="@Vehicle" OnValidSubmit="SaveVehicle" FormName="Add Vehicle">
-                <DataAnnotationsValidator />
-                <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
-                <Field>
-                    <FieldLabel for="Licence">Licence plate</FieldLabel>
-                    <FieldBody>
-                        <InputText Class="form-control" @bind-Value="Vehicle.LicensePlate" id="LicensePlate" />
-                        <ValidationMessage For="@(() => Vehicle.LicensePlate)" />
-                    </FieldBody>
-                </Field>
-                <Field>
-                    <FieldLabel for="Model">Model</FieldLabel>
-                    <FieldBody>
-                        <Select Class="form-control" TValue="int" @bind-Value="Vehicle.Car" id="Brand">
-                            @foreach (var car in Cars)
-                            {
-                                <option value="@car.Id">@car.Model</option>
-                            }
-                        </Select>
-                    </FieldBody>
-                </Field>
-                <Field>
-                    <FieldLabel for="Brand">Brand</FieldLabel>
-                    <FieldBody>
-                        <Select Class="form-control" TValue="int" @bind-Value="Vehicle.Car" id="Brand">
-                            @foreach (var brand in Brands)
-                            {
-                                <option value="@brand.Id">@brand.BrandName</option>
-                            }
-                        </Select>
-                    </FieldBody>
-                </Field>
-
-                <Field>
-                    <FieldLabel for="Year">Year</FieldLabel>
-                    <FieldBody>
-                        <InputNumber Class="form-control" @bind-Value="Vehicle.Year" id="Year" />
-                        <ValidationMessage For="@(() => Vehicle.Year)" />
-                    </FieldBody>
-                </Field>
-                <Field>
-                    <FieldLabel for="Mileage">Mileage</FieldLabel>
-                    <FieldBody>
-                        <InputNumber Class="form-control" @bind-Value="Vehicle.Mileage" id="Mileage" />
-                        <ValidationMessage For="@(() => Vehicle.Mileage)" />
-                    </FieldBody>
-                </Field>
-                <button class="btn-primary form-control" type="submit">Save</button>
-            </EditForm> *@
-
-
-            @if (_errorMessage != null)
-            {
-                <p>@_errorMessage</p>
-            }
-
-            @if (_successMessage != null)
-            {
-                <p>@_successMessage</p>
-            }
-
-            <EditForm Model="@Vehicle" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
-                <DataAnnotationsValidator />
-                <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
-
-                <div class="form-group">
-                    <label for="Car" class="form-label">Car
-                    <InputSelect id="Car" @bind-Value="SelectedCarId">
-                        <option value="">-- Select Car --</option>
-                        @foreach (var car in Cars)
-                        {
-                            <option value="@car.Id">@car.ModelName</option>
-                        }
-                    </InputSelect>
-                    </label>
-                    <ValidationMessage For="@(() => Vehicle.Model)" />
-                </div>
-
-                <div class="form-group">
-                    <label for="Brand">Brand</label>
-                    <InputSelect id="Brand"  @bind-Value="SelectedBrandId">
-                        <option value="">-- Select Brand --</option>
-                        @foreach (var brand in Brands)
-                        {
-                            <option value="@brand.Id">@brand.BrandName</option>
-                        }
-                    </InputSelect>
-                    <ValidationMessage For="@(() => Vehicle.Brand)" />
-                </div>
-
-                <div class="form-group">
-                    <label for="LicensePlate" class="form-label">License Plate
-                    <InputText id="LicensePlate" @bind-Value="Vehicle.LicensePlate" />
-                    </label>
-                    <ValidationMessage For="@(() => Vehicle.LicensePlate)" />
-                </div>
-
-                <div class="form-group">
-                    <label for="Year">Year</label>
-                    <InputNumber id="Year" @bind-Value="Vehicle.Year" />    
-                    <ValidationMessage For="@(() => Vehicle.Year)" />
-                </div>
-
-                <div class="form-group">
-                    <label for="Mileage">Mileage</label>
-                    <InputNumber id="Mileage" @bind-Value="Vehicle.Mileage" />
-                    <ValidationMessage For="@(() => Vehicle.Mileage)" />
-                </div>
-
-                <button type="submit" class="btn btn-primary">Save</button>
-            </EditForm>
+            <FleetManagement.Components.EditVehicleComponent Vehicle="Vehicle" Localizer="Localizer"/>
         </ModalBody>
 
     </ModalContent>

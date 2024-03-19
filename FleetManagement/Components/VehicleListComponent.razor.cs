@@ -20,7 +20,7 @@ namespace FleetManagement.Components
 
         protected override void OnInitialized()
         {
-            Vehicles = VehicleData.GetVehicles();
+            Vehicles = VehicleData.Instance.VehicleModels;
         }
     }
 }

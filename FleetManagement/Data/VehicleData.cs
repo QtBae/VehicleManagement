@@ -4,11 +4,39 @@ using Shared.ApiModels;
 
 namespace FleetManagement.Data
 {
-    public abstract class VehicleData
+    public  class VehicleData
     {
+        private static VehicleData _instance;
+        private IEnumerable<VehicleModel> _vehicles;
+
+        public static VehicleData Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new VehicleData();
+                    
+                }
+                return _instance;
+            }
+        }
+        
         private static IEnumerable<CarModel?> _carModels= new List<CarModel?>();
 
-        public static IEnumerable<VehicleModel?> GetVehicles()
+        public IEnumerable<VehicleModel> VehicleModels
+        {
+            get
+            {
+                if (_instance._vehicles == null)
+                {
+                    _instance._vehicles = _instance.GetVehicles();
+                }
+                return _instance._vehicles;
+            }
+        }
+
+        public IEnumerable<VehicleModel?> GetVehicles()
         {
             _carModels=GetCarsModels();
             var brands = GetBrands();

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="HelloBlaz" xml:space="preserve">
-    <value>Bonjour Tout le monde</value>
-  </data>
-  <data name="VehicleTitle" xml:space="preserve">
-    <value>Liste des voitures</value>
-  </data>
   <data name="Brand" xml:space="preserve">
     <value>Marque</value>
   </data>
@@ -137,14 +131,5 @@
   </data>
   <data name="Mileage" xml:space="preserve">
     <value>Kilométrage</value>
-  </data>
-  <data name="BtnSave" xml:space="preserve">
-    <value>Sauvegarder</value>
-  </data>
-  <data name="AddVehicleTitle" xml:space="preserve">
-    <value>Editer un Vehicule</value>
-  </data>
-  <data name="BtnAddVehicle" xml:space="preserve">
-    <value>Ajouter Un Vehicule</value>
   </data>
 </root>

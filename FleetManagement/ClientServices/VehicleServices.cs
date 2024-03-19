@@ -17,21 +17,23 @@ namespace FleetManagement.ClientServices
                 if (response != null)
                 {
                     List<VehicleModel?> allVehiclesAsync = response.ToList();
-                    return !allVehiclesAsync!.Any() ? allVehiclesAsync : VehicleData.GetVehicles();
+                    return !allVehiclesAsync!.Any() ? allVehiclesAsync : VehicleData.Instance.GetVehicles();
                 }
-                return VehicleData.GetVehicles();
+                return VehicleData.Instance.VehicleModels.ToList();
             }
             catch (Exception)
             {
-                return VehicleData.GetVehicles();
+                return VehicleData.Instance.VehicleModels.ToList();
             }
         }
 
         public async Task<VehicleModel?> GetVehicleByIdAsync(Guid id)
         {
-            var response = await _httpClient.GetFromJsonAsync<VehicleModel>($"api/vehicles/{id}");
+            //var response = await _httpClient.GetFromJsonAsync<VehicleModel>($"api/vehicles/{id}");
 
-            return response ?? VehicleData.GetVehicles().FirstOrDefault(v => v != null && v.Id == id);
+            //return response ?? VehicleData.Instance.VehicleModels.FirstOrDefault(v => v != null && v.Id == id);
+
+            return VehicleData.Instance.VehicleModels.FirstOrDefault(v => v != null && v.Id == id);
         }
 
         public async Task<VehicleModel?> AddVehicleAsync(VehicleModel vehicle)

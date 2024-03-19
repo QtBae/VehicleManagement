@@ -1,0 +1,58 @@
+﻿
+<EditForm Model="@Vehicle" >
+    <DataAnnotationsValidator />
+    <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+
+
+    <div class="form-group">
+        <label for="Car" class="form-label">
+            @Localizer["Model"]
+        </label>
+        <InputSelect class="form-control" id="Car" @bind-Value="SelectedCarId">
+            <option value="">-- Select Car --</option>
+            @foreach (var car in Cars)
+            {
+                <option value="@car.Id">@car.ModelName</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => Vehicle.Model)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Brand">@Localizer["Brand"]</label>
+        <InputSelect id="Brand" class="form-control" @bind-Value="SelectedBrandId">
+            <option value="">-- Select Brand --</option>
+            @foreach (var brand in Brands)
+            {
+                <option value="@brand.Id">@brand.BrandName</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => Vehicle.Brand)" />
+    </div>
+
+    <div class="form-group">
+        <label for="LicensePlate" class="form-label">
+            @Localizer["LP"]
+        </label>
+        <InputText id="LicensePlate" class="form-control" @bind-Value="Vehicle.LicensePlate" />
+        <ValidationMessage For="@(() => Vehicle.LicensePlate)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Year">
+            <strong>
+                @Localizer["Year"]
+            </strong>
+        </label>
+        <InputNumber id="Year" class="form-control" @bind-Value="Vehicle.Year" />
+        <ValidationMessage For="@(() => Vehicle.Year)" />
+    </div>
+
+    <div class="form-group">
+        <label for="Mileage">@Localizer["Mileage"]</label>
+        <InputNumber id="Mileage" class="form-control" @bind-Value="Vehicle.Mileage" />
+        <ValidationMessage For="@(() => Vehicle.Mileage)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary form-control">@Localizer["BtnSave"]</button>
+</EditForm>
