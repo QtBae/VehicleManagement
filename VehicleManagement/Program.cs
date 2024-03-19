@@ -1,7 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using System;
+using VehicleManagement.Data;
+using VehicleManagement.Profiles;
+using VehicleManagement.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+//register entity framework
+builder.Services.AddDbContext<AppDbContext>();
 
 // Add services to the container.
 
@@ -10,10 +16,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IBrandService, BrandService>();
+builder.Services.AddScoped<ICarService, CarService>();
+builder.Services.AddScoped<IVehicleService, VehicleService>();
+builder.Services.AddScoped<IMaintainanceService, MaintainanceService>();
+
+
+// register automapper
+builder.Services.AddAutoMapper(typeof(BrandProfile));
+builder.Services.AddAutoMapper(typeof(CarProfile));
+
+
 var app = builder.Build();
 
-//register entity framework
-builder.Services.AddDbContext<DbContext>();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -25,7 +40,7 @@ if (app.Environment.IsDevelopment())
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<DbContext>();
+    var context = services.GetRequiredService<AppDbContext>();
     //await context.Database.MigrateAsync();
     await context.Database.EnsureCreatedAsync();
 }
