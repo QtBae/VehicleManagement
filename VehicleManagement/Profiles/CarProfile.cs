@@ -9,6 +9,7 @@ namespace VehicleManagement.Profiles
             CreateMap<Entities.CarEntity, CarModel>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.ModelName, opt => opt.MapFrom(src => src.ModelName))
+                .ForMember(dest => dest.BrandId, opt => opt.MapFrom(src => src.BrandId))
                 .ForMember(dest => dest.Brand, opt => opt.MapFrom(src => src.Brand))
                 .ForMember(dest => dest.MaintenanceFrequency, opt => opt.MapFrom(src => src.MaintenanceFrequency));
 
@@ -16,6 +17,7 @@ namespace VehicleManagement.Profiles
             CreateMap<CarModel, Entities.CarEntity>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.ModelName, opt => opt.MapFrom(src => src.ModelName))
+                .ForMember(dest => dest.BrandId, opt => opt.MapFrom(src => src.BrandId))
                 .ForMember(dest => dest.Brand, opt => opt.MapFrom(src => src.Brand))
                 .ForMember(dest => dest.MaintenanceFrequency, opt => opt.MapFrom(src => src.MaintenanceFrequency));
         }

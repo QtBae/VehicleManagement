@@ -14,6 +14,8 @@ namespace VehicleManagement.Profiles
                 .ForMember(dest => dest.Year, opt => opt.MapFrom(src => src.Year))
                 .ForMember(dest => dest.Mileage, opt => opt.MapFrom(src => src.Mileage))
                 .ForMember(dest => dest.Energy, opt => opt.MapFrom(src => src.Energy))
+                .ForMember(dest => dest.ModelId, opt => opt.MapFrom(src => src.ModelId))
+                .ForMember(dest => dest.BrandId, opt => opt.MapFrom(src => src.BrandId))
                 .ForMember(dest => dest.Maintainances, opt => opt.MapFrom(src => src.Maintainances));
 
 
@@ -25,6 +27,8 @@ namespace VehicleManagement.Profiles
                 .ForMember(dest => dest.Year, opt => opt.MapFrom(src => src.Year))
                 .ForMember(dest => dest.Mileage, opt => opt.MapFrom(src => src.Mileage))
                 .ForMember(dest => dest.Energy, opt => opt.MapFrom(src => src.Energy))
+                .ForMember(dest => dest.ModelId, opt => opt.MapFrom(src => src.ModelId))
+                .ForMember(dest => dest.BrandId, opt => opt.MapFrom(src => src.BrandId))
                 .ForMember(dest => dest.Maintainances, opt => opt.MapFrom(src => src.Maintainances));
         }
     }

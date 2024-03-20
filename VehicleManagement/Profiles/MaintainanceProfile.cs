@@ -11,7 +11,7 @@ namespace VehicleManagement.Profiles
                 .ForMember(dest => dest.Works, opt => opt.MapFrom(src => src.Works))
                 .ForMember(dest => dest.Mileage, opt => opt.MapFrom(src => src.Mileage))
                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date))
-                .ForMember(dest => dest.Vehicle, opt => opt.MapFrom(src => src.Vehicle));
+                .ForMember(dest => dest.VehicleId, opt => opt.MapFrom(src => src.VehicleId));
 
 
             CreateMap<MaintainanceModel, Entities.MaintainanceEntity>()
@@ -19,7 +19,7 @@ namespace VehicleManagement.Profiles
                 .ForMember(dest => dest.Works, opt => opt.MapFrom(src => src.Works))
                 .ForMember(dest => dest.Mileage, opt => opt.MapFrom(src => src.Mileage))
                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date))
-                .ForMember(dest => dest.Vehicle, opt => opt.MapFrom(src => src.Vehicle));
+                .ForMember(dest => dest.VehicleId, opt => opt.MapFrom(src => src.VehicleId));
         }
     }
 }
