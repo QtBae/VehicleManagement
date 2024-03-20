@@ -6,7 +6,11 @@ namespace VehicleManagement.Entities
     {
         public Guid Id { get; set; }
         public string ModelName { get; set; }
-        public BrandEntity Brand { get; set; }
+
+        public Guid BrandId { get; set; }
+        public BrandEntity? Brand { get; set; }
         public int MaintenanceFrequency { get; set; }
+
+
     }
 }

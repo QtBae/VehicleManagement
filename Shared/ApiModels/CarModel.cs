@@ -14,7 +14,11 @@ namespace Shared.ApiModels
         [Required]
         [MinLength(1, ErrorMessage = "The model name should be atleast 1 charater")]
         public string ModelName { get; set; }
-        public BrandModel Brand { get; set; }
+
+        [Required]
+
+        public Guid BrandId { get; set; }
+        public BrandModel? Brand { get; set; }
         public int MaintenanceFrequency { get; set; }
     }
 }

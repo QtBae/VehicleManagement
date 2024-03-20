@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using VehicleManagement.Entities;
 
 namespace VehicleManagement.Data
 {
@@ -15,6 +16,17 @@ namespace VehicleManagement.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=app.db");
+        }
+
+
+        override protected void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<VehicleEntity>()
+                .HasMany(v => v.Maintainances)
+                .WithOne()
+                .HasForeignKey(m => m.VehicleId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired();
         }
     }
 }

@@ -10,13 +10,16 @@ namespace Shared.ApiModels
     public class VehicleModel
     {
         public Guid Id { get; set; }
+        
+        public CarModel? Model { get; set; }
 
         [Required]
-        public CarModel Model { get; set; }
-
+        public Guid ModelId { get; set; }
         public List<MaintainanceModel>? Maintainances { get; set; }
 
         [Required]
+
+        public Guid BrandId { get; set; }
         public BrandModel? Brand { get; set; }
 
         [Required]

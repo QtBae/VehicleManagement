@@ -7,11 +7,11 @@ namespace VehicleManagement.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarController : ControllerBase
+    public class ModelController : ControllerBase
     {
         private readonly ICarService _carService;
 
-        public CarController(ICarService carService)
+        public ModelController(ICarService carService)
         {
             _carService = carService;
         }

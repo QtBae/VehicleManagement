@@ -21,6 +21,8 @@ namespace Shared.ApiModels
         [Required]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
-        public VehicleModel Vehicle { get; set; }
+
+        [Required]
+        public Guid VehicleId { get; set; }
     }
 }

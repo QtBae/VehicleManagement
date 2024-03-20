@@ -8,6 +8,7 @@ namespace VehicleManagement.Entities
         public string Works { get; set; }
         public int Mileage { get; set; }
         public DateTime Date { get; set; }
-        public CarEntity Vehicle { get; set; }
+
+        public Guid VehicleId { get; set; }
     }
 }
