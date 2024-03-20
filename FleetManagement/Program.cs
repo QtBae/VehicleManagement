@@ -22,10 +22,16 @@ builder.Services.AddBlazorise(options =>
     .AddFontAwesomeIcons();
 
 builder.Services.AddScoped<IVehicleServices, VehicleServices>();
+builder.Services.AddScoped<IModelServices, ModelServices>();
+builder.Services.AddScoped<IMaintenanceService, MaintenanceService>();
 
 //await builder.Build().RunAsync();
 
 builder.Services.AddLocalization();
+builder.Services.AddHttpClient<ServiceBase>(ServiceBase =>
+{
+    ServiceBase.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
+});
 
 var host = builder.Build();
 

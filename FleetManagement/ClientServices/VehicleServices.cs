@@ -4,9 +4,8 @@ using System.Net.Http.Json;
 
 namespace FleetManagement.ClientServices
 {
-    public class VehicleServices(HttpClient httpClient) : IVehicleServices
+    public class VehicleServices(HttpClient httpClient,ILogger<VehicleServices> logger):ServiceBase(httpClient,logger), IVehicleServices
     {
-        private readonly HttpClient _httpClient = httpClient;
         public async Task<IEnumerable<VehicleModel?>> GetAllVehiclesAsync()
         {
 

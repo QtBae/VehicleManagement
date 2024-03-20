@@ -3,9 +3,8 @@ using System.Net.Http.Json;
 
 namespace FleetManagement.ClientServices
 {
-    public class MaintenanceService (HttpClient httpClient,ILogger<IMaintenanceService> logger):IMaintenanceService
+    public class MaintenanceService (HttpClient httpClient,ILogger<MaintenanceService> logger):ServiceBase(httpClient,logger), IMaintenanceService
     {
-        private readonly HttpClient _httpClient= httpClient;
         public async Task<MaintainanceModel?> GetMaintainanceModelByIdAsync(Guid id)
         {
             try

@@ -3,16 +3,16 @@ using System.Net.Http.Json;
 
 namespace FleetManagement.ClientServices
 {
-    public class ModelServices(HttpClient httpClient, ILogger<ModelServices> listLogger) : IModelServices
+    public class ModelServices(HttpClient httpClient,ILogger<ModelServices> logger):ServiceBase(httpClient,logger), IModelServices
     {
         public async Task<List<CarModel>> GetModelsAsync()
         {
             try
             {
-                var models = await httpClient.GetFromJsonAsync<List<CarModel>>("api/model");
+                var models = await _httpClient.GetFromJsonAsync<List<CarModel>>("api/model");
 
                 if (models != null) return models;
-                listLogger.LogError("Failed to retrieve models");
+                logger.LogError("Failed to retrieve models");
                 return [];
             }
             catch (Exception ex)
@@ -25,10 +25,10 @@ namespace FleetManagement.ClientServices
         {
             try
             {
-                var model = await httpClient.GetFromJsonAsync<CarModel>($"api/modele/{id}");
+                var model = await _httpClient.GetFromJsonAsync<CarModel>($"api/modele/{id}");
 
                 if (model != null) return model;
-                listLogger.LogError($"Failed to retrieve model with id {id}");
+                logger.LogError($"Failed to retrieve model with id {id}");
                 return new CarModel();
             }
             catch (Exception ex)
@@ -41,12 +41,12 @@ namespace FleetManagement.ClientServices
         {
             try
             {
-                var response = await httpClient.PostAsJsonAsync("api/modele", model);
+                var response = await _httpClient.PostAsJsonAsync("api/modele", model);
                 
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    listLogger.LogError("Failed to add model");
+                    logger.LogError("Failed to add model");
                     return null;
                 }
                 var result = await response.Content.ReadFromJsonAsync<CarModel>();
@@ -62,12 +62,12 @@ namespace FleetManagement.ClientServices
         {
             try
             {
-                var response = await httpClient.PutAsJsonAsync("api/model", model);
+                var response = await _httpClient.PutAsJsonAsync("api/model", model);
                 
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    listLogger.LogError("Failed to update model");
+                    logger.LogError("Failed to update model");
                     return null;
                 }
                 var result = await response.Content.ReadFromJsonAsync<CarModel>();
@@ -83,11 +83,11 @@ namespace FleetManagement.ClientServices
         {
             try
             {
-                var response = await httpClient.DeleteAsync($"api/model/{id}");
+                var response = await _httpClient.DeleteAsync($"api/model/{id}");
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    listLogger.LogError($"Failed to delete model with id {id}");
+                    logger.LogError($"Failed to delete model with id {id}");
                 }
             }
             catch (Exception ex)
