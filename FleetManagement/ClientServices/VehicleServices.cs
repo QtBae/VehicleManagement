@@ -1,6 +1,8 @@
 ﻿using FleetManagement.Data;
 using Shared.ApiModels;
+using System.Diagnostics;
 using System.Net.Http.Json;
+using System.Text.Json;
 
 namespace FleetManagement.ClientServices
 {
@@ -11,33 +13,33 @@ namespace FleetManagement.ClientServices
 
             try
             {
-                var response = await _httpClient.GetFromJsonAsync<IEnumerable<VehicleModel>>("api/vehicles");
+                var response = await _httpClient.GetFromJsonAsync<IEnumerable<VehicleModel>>("api/Vehicle");
 
                 if (response != null)
                 {
-                    List<VehicleModel?> allVehiclesAsync = response.ToList();
-                    return !allVehiclesAsync!.Any() ? allVehiclesAsync : VehicleData.Instance.GetVehicles();
+                    return response;
                 }
                 return VehicleData.Instance.VehicleModels.ToList();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Debug.WriteLine($"Error getting vehicles from API {ex.Message}");
                 return VehicleData.Instance.VehicleModels.ToList();
             }
         }
 
         public async Task<VehicleModel?> GetVehicleByIdAsync(Guid id)
         {
-            //var response = await _httpClient.GetFromJsonAsync<VehicleModel>($"api/vehicles/{id}");
+            var response = await _httpClient.GetFromJsonAsync<VehicleModel>($"api/vehicle/{id}");
 
-            //return response ?? VehicleData.Instance.VehicleModels.FirstOrDefault(v => v != null && v.Id == id);
+            return response ?? VehicleData.Instance.VehicleModels.FirstOrDefault(v => v != null && v.Id == id);
 
-            return VehicleData.Instance.VehicleModels.FirstOrDefault(v => v != null && v.Id == id);
+            //return VehicleData.Instance.VehicleModels.FirstOrDefault(v => v != null && v.Id == id);
         }
 
         public async Task<VehicleModel?> AddVehicleAsync(VehicleModel vehicle)
         {
-            var response = await _httpClient.PostAsJsonAsync("api/vehicles", vehicle);
+            var response = await _httpClient.PostAsJsonAsync("api/vehicle", vehicle);
 
             if (response.IsSuccessStatusCode)
             {
@@ -51,7 +53,7 @@ namespace FleetManagement.ClientServices
 
         public async Task<VehicleModel?> UpdateVehicleAsync(VehicleModel vehicle)
         {
-            var response = await _httpClient.PutAsJsonAsync($"api/vehicles/{vehicle.Id}", vehicle);
+            var response = await _httpClient.PutAsJsonAsync($"api/vehicle/{vehicle.Id}", vehicle);
 
             if (response.IsSuccessStatusCode)
             {
@@ -67,7 +69,7 @@ namespace FleetManagement.ClientServices
         {
             if (vehicle != null)
             {
-                var response = await _httpClient.DeleteAsync($"api/vehicles/{vehicle.Id}");
+                var response = await _httpClient.DeleteAsync($"api/vehicle/{vehicle.Id}");
 
                 return response.IsSuccessStatusCode ? vehicle : null;
             }

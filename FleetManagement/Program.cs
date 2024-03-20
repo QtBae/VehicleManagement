@@ -28,10 +28,7 @@ builder.Services.AddScoped<IMaintenanceService, MaintenanceService>();
 //await builder.Build().RunAsync();
 
 builder.Services.AddLocalization();
-builder.Services.AddHttpClient<ServiceBase>(ServiceBase =>
-{
-    ServiceBase.BaseAddress = new Uri("https://localhost:7177");
-});
+builder.Services.AddHttpClient();
 
 var host = builder.Build();
 

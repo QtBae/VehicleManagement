@@ -35,6 +35,8 @@ builder.Services.AddAutoMapper(typeof(CarProfile));
 builder.Services.AddAutoMapper(typeof(VehicleProfile));
 builder.Services.AddAutoMapper(typeof(MaintainanceProfile));
 
+builder.Services.AddCors();
+
 
 var app = builder.Build();
 
@@ -53,6 +55,8 @@ using (var scope = app.Services.CreateScope())
     //await context.Database.MigrateAsync();
     await context.Database.EnsureCreatedAsync();
 }
+
+app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
