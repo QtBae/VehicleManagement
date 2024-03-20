@@ -15,12 +15,12 @@ namespace VehicleManagement.Repositories
 
         public async Task<IEnumerable<VehicleEntity>> GetAllVehiclesAsync()
         {
-            return await _context.Vehicles.ToListAsync();
+            return await _context.Vehicles.AsQueryable().Include(m=>m.Model).Include(m=>m.Brand).Include(m=>m.Maintainances).ToListAsync();
         }
 
-        public async Task<VehicleEntity> GetVehicleByIdAsync(int id)
+        public async Task<VehicleEntity> GetVehicleByIdAsync(Guid id)
         {
-            return await _context.Vehicles.FindAsync(id);
+            return await _context.Vehicles.AsQueryable().Include(m=>m.Model).Include(m=>m.Brand).Include(m=>m.Maintainances).FirstOrDefaultAsync(v => v.Id == id);
         }
 
         public async Task<VehicleEntity> CreateVehicleAsync(VehicleEntity vehicle)
@@ -62,7 +62,7 @@ namespace VehicleManagement.Repositories
         Task<IEnumerable<VehicleEntity>> GetAllVehiclesAsync();
 
         // get vehicles by id
-        Task<VehicleEntity> GetVehicleByIdAsync(int id);
+        Task<VehicleEntity> GetVehicleByIdAsync(Guid id);
 
         // create vehicle
         Task<VehicleEntity> CreateVehicleAsync(VehicleEntity vehicle);
