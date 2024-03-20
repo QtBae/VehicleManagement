@@ -147,4 +147,7 @@
   <data name="BtnAddVehicle" xml:space="preserve">
     <value>Add Vehicle</value>
   </data>
+  <data name="Id" xml:space="preserve">
+    <value>ID</value>
+  </data>
 </root>

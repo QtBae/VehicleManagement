@@ -115,4 +115,7 @@
   <data name="Mileage" xml:space="preserve">
     <value>Mileage</value>
   </data>
+  <data name="Energy" xml:space="preserve">
+    <value>Energy</value>
+  </data>
 </root>

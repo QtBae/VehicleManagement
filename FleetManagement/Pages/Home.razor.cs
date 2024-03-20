@@ -3,9 +3,9 @@ using FleetManagement.Data;
 using Microsoft.AspNetCore.Components;
 using Shared.ApiModels;
 
-namespace FleetManagement.Components
+namespace FleetManagement.Pages
 {
-    public partial class VehicleListComponent
+    public partial class Home
     {
         [Inject]
         public IVehicleServices VehicleServices { get; set; }

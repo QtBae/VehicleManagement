@@ -31,9 +31,9 @@ namespace VehicleManagement.Services
             return _mapper.Map<IEnumerable<VehicleModel>>(vehicles);
         }
 
-        public async Task<VehicleModel> GetVehicleByIdAsync(int id)
+        public async Task<VehicleModel> GetVehicleByIdAsync(Guid id)
         {
-            if (id <= 0)
+            if (id == Guid.Empty)
             {
                 _logger.LogError("Invalid vehicle id");
                 return null;
@@ -115,7 +115,7 @@ namespace VehicleManagement.Services
         Task<IEnumerable<VehicleModel>> GetAllVehiclesAsync();
 
         // get vehicle by id
-        Task<VehicleModel> GetVehicleByIdAsync(int id);
+        Task<VehicleModel> GetVehicleByIdAsync(Guid id);
 
         // create vehicle
         Task<VehicleModel> CreateVehicleAsync(VehicleModel vehicle);

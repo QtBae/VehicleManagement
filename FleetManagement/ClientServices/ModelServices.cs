@@ -25,7 +25,7 @@ namespace FleetManagement.ClientServices
         {
             try
             {
-                var model = await _httpClient.GetFromJsonAsync<CarModel>($"api/modele/{id}");
+                var model = await _httpClient.GetFromJsonAsync<CarModel>($"api/model/{id}");
 
                 if (model != null) return model;
                 logger.LogError($"Failed to retrieve model with id {id}");
@@ -41,7 +41,7 @@ namespace FleetManagement.ClientServices
         {
             try
             {
-                var response = await _httpClient.PostAsJsonAsync("api/modele", model);
+                var response = await _httpClient.PostAsJsonAsync("api/model", model);
                 
 
                 if (!response.IsSuccessStatusCode)
