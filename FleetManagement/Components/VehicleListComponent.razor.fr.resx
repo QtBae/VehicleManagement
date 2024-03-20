@@ -135,4 +135,7 @@
   <data name="Mileage" xml:space="preserve">
     <value>Kilométrage</value>
   </data>
+  <data name="Energy" xml:space="preserve">
+    <value>Energi</value>
+  </data>
 </root>

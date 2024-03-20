@@ -27,6 +27,9 @@ namespace VehicleManagement.Data
                 .HasForeignKey(m => m.VehicleId)
                 .OnDelete(DeleteBehavior.Cascade)
                 .IsRequired();
+
+            modelBuilder.Entity<BrandEntity>()
+                .HasData(Shared.SeedData.BrandData.GetBrands().ToArray());
         }
     }
 }

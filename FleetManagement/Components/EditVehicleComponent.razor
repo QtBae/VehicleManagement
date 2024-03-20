@@ -31,6 +31,18 @@
     </div>
 
     <div class="form-group">
+        <label for="Energy">@Localizer["Energy"]</label>
+        <InputSelect id="Energy" class="form-control" @bind-Value="SelectedEnergy">
+            <option value="">-- Select Energy --</option>
+            @foreach (var energy in Energies)
+            {
+                <option value="@energy">@energy</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => Vehicle.Energy)" />
+    </div>
+
+    <div class="form-group">
         <label for="LicensePlate" class="form-label">
             @Localizer["LP"]
         </label>

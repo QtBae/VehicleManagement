@@ -72,7 +72,7 @@ namespace FleetManagement.Data
             _carModels=GetCarsModels();
             var faker = new Faker<BrandModel>()
                 .RuleFor(b => b.Id,f => f.Random.Guid())
-                .RuleFor(b => b.BrandName,f => f.Vehicle.Manufacturer());
+                .RuleFor(b => b.BrandName,f => f.Vehicle.Model());
 
             return faker.Generate(nbr);
         }

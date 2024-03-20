@@ -1,6 +1,7 @@
 ﻿using FleetManagement.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
+using Shared;
 using Shared.ApiModels;
 
 namespace FleetManagement.Components
@@ -25,20 +26,27 @@ namespace FleetManagement.Components
         }
         public Guid SelectedCarId
         {
-            get
-            {
-                if (Vehicle.Model != null)
-                    return Vehicle.Brand is not null ? Vehicle.Model.Id : Guid.Empty;
-                return Guid.Empty;
-            }
+            get=> Vehicle.Model?.Id ?? Guid.Empty;
+            //{
+            //    if (Vehicle.Model != null)
+            //        return Vehicle.Model is not null ? Vehicle.Model.Id : Guid.Empty;
+            //    return Guid.Empty;
+            //}
             set
             {
                 Vehicle!.Model = Cars.FirstOrDefault(c => c.Id == value);
             }
         }
 
+        public Energy SelectedEnergy
+        {
+            get => Vehicle.Energy;
+            set => Vehicle.Energy = value;
+        }
+
 
         IEnumerable<BrandModel> Brands = VehicleData.GetBrands(10);
         IEnumerable<CarModel?> Cars = VehicleData.GetCarsModels(10);
+        List<Energy> Energies = Enum.GetValues<Energy>().ToList();
     }
 }
