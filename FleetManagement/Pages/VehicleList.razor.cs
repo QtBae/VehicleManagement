@@ -15,9 +15,9 @@ namespace FleetManagement.Pages
 
 
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            Vehicles = VehicleData.Instance.VehicleModels;
+            Vehicles = await VehicleServices.GetAllVehiclesAsync();
         }
 
         private void AddVehicle(Microsoft.AspNetCore.Components.Web.MouseEventArgs e)
