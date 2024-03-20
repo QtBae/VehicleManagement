@@ -31,9 +31,9 @@ namespace VehicleManagement.Services
             return _mapper.Map<IEnumerable<BrandModel>>(brands);
         }
 
-        public async Task<BrandModel> GetBrandByIdAsync(int id)
+        public async Task<BrandModel> GetBrandByIdAsync(Guid id)
         {
-            if (id <= 0)
+            if (id <= null)
             {
                 _logger.LogError("Invalid brand id");
                 return null;
@@ -90,9 +90,9 @@ namespace VehicleManagement.Services
             return _mapper.Map<BrandModel>(updatedBrand);
         }
 
-        public async Task<bool> DeleteBrandAsync(int id)
+        public async Task<bool> DeleteBrandAsync(Guid id)
         {
-            if (id <= 0)
+            if (id <= null)
             {
                 _logger.LogError("Invalid brand id");
                 return false;
@@ -115,7 +115,7 @@ namespace VehicleManagement.Services
         Task<IEnumerable<BrandModel>> GetAllBrandsAsync();
 
         // get brand by id
-        Task<BrandModel> GetBrandByIdAsync(int id);
+        Task<BrandModel> GetBrandByIdAsync(Guid id);
 
         // create brand
         Task<BrandModel> CreateBrandAsync(BrandModel brand);
@@ -124,7 +124,7 @@ namespace VehicleManagement.Services
         Task<BrandModel> UpdateBrandAsync(BrandModel brand);
 
         // delete brand
-        Task<bool> DeleteBrandAsync(int id);
+        Task<bool> DeleteBrandAsync(Guid id);
 
 
     }

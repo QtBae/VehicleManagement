@@ -90,9 +90,9 @@ namespace VehicleManagement.Services
             return _mapper.Map<VehicleModel>(updatedVehicle);
         }
 
-        public async Task<bool> DeleteVehicleAsync(int id)
+        public async Task<bool> DeleteVehicleAsync(Guid id)
         {
-            if (id <= 0)
+            if (id <= null)
             {
                 _logger.LogError("Invalid vehicle id");
                 return false;
@@ -124,7 +124,7 @@ namespace VehicleManagement.Services
         Task<VehicleModel> UpdateVehicleAsync(VehicleModel vehicle);
 
         // delete vehicle
-        Task<bool> DeleteVehicleAsync(int id);
+        Task<bool> DeleteVehicleAsync(Guid id);
 
 
     }

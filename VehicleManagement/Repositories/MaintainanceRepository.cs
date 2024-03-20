@@ -18,7 +18,7 @@ namespace VehicleManagement.Repositories
             return await _context.Maintainances.ToListAsync();
         }
 
-        public async Task<MaintainanceEntity> GetMaintainanceByIdAsync(int id)
+        public async Task<MaintainanceEntity> GetMaintainanceByIdAsync(Guid id)
         {
             return await _context.Maintainances.FindAsync(id);
         }
@@ -38,7 +38,7 @@ namespace VehicleManagement.Repositories
             return maintainance;
         }
 
-        public async Task<bool> DeleteMaintainanceAsync(int id)
+        public async Task<bool> DeleteMaintainanceAsync(Guid id)
         {
             var maintainance = await _context.Maintainances.FindAsync(id);
             if (maintainance == null)
@@ -64,7 +64,7 @@ namespace VehicleManagement.Repositories
         Task<IEnumerable<MaintainanceEntity>> GetAllMaintainancesAsync();
 
         // get maintainances by id
-        Task<MaintainanceEntity> GetMaintainanceByIdAsync(int id);
+        Task<MaintainanceEntity> GetMaintainanceByIdAsync(Guid id);
 
         // create maintainance
         Task<MaintainanceEntity> CreateMaintainanceAsync(MaintainanceEntity maintainance);
@@ -73,7 +73,7 @@ namespace VehicleManagement.Repositories
         Task<MaintainanceEntity> UpdateMaintainanceAsync(MaintainanceEntity maintainance);
 
         // delete maintainance
-        Task<bool> DeleteMaintainanceAsync(int id);
+        Task<bool> DeleteMaintainanceAsync(Guid id);
 
 
     }
