@@ -109,7 +109,7 @@ namespace VehicleManagement.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> DeleteVehicleAsync(int id)
+        public async Task<IActionResult> DeleteVehicleAsync(Guid id)
         {
             if (id <= 0)
             {

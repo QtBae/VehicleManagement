@@ -31,9 +31,9 @@ namespace VehicleManagement.Services
             return _mapper.Map<IEnumerable<CarModel>>(cars);
         }
 
-        public async Task<CarModel> GetCarByIdAsync(int id)
+        public async Task<CarModel> GetCarByIdAsync(Guid id)
         {
-            if (id <= 0)
+            if (id <= null)
             {
                 _logger.LogError("Invalid car id");
                 return null;
@@ -90,9 +90,9 @@ namespace VehicleManagement.Services
             return _mapper.Map<CarModel>(updatedCar);
         }
 
-        public async Task<bool> DeleteCarAsync(int id)
+        public async Task<bool> DeleteCarAsync(Guid id)
         {
-            if (id <= 0)
+            if (id <= null)
             {
                 _logger.LogError("Invalid car id");
                 return false;
@@ -115,7 +115,7 @@ namespace VehicleManagement.Services
         Task<IEnumerable<CarModel>> GetAllCarsAsync();
 
         // get car by id
-        Task<CarModel> GetCarByIdAsync(int id);
+        Task<CarModel> GetCarByIdAsync(Guid id);
 
         // create car
         Task<CarModel> CreateCarAsync(CarModel car);
@@ -124,7 +124,7 @@ namespace VehicleManagement.Services
         Task<CarModel> UpdateCarAsync(CarModel car);
 
         // delete car
-        Task<bool> DeleteCarAsync(int id);
+        Task<bool> DeleteCarAsync(Guid id);
 
 
     }

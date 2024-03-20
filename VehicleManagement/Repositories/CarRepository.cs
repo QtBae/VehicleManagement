@@ -18,7 +18,7 @@ namespace VehicleManagement.Repositories
             return await _context.Cars.ToListAsync();
         }
 
-        public async Task<CarEntity> GetCarByIdAsync(int id)
+        public async Task<CarEntity> GetCarByIdAsync(Guid id)
         {
             return await _context.Cars.FindAsync(id);
         }
@@ -38,7 +38,7 @@ namespace VehicleManagement.Repositories
             return car;
         }
 
-        public async Task<bool> DeleteCarAsync(int id)
+        public async Task<bool> DeleteCarAsync(Guid id)
         {
             var car = await _context.Cars.FindAsync(id);
             if (car == null)
@@ -63,7 +63,7 @@ namespace VehicleManagement.Repositories
         Task<IEnumerable<CarEntity>> GetAllCarsAsync();
 
         // get cars by id
-        Task<CarEntity> GetCarByIdAsync(int id);
+        Task<CarEntity> GetCarByIdAsync(Guid id);
 
         // create car
         Task<CarEntity> CreateCarAsync(CarEntity car);
@@ -72,7 +72,7 @@ namespace VehicleManagement.Repositories
         Task<CarEntity> UpdateCarAsync(CarEntity car);
 
         // delete car
-        Task<bool> DeleteCarAsync(int id);
+        Task<bool> DeleteCarAsync(Guid id);
 
 
     }

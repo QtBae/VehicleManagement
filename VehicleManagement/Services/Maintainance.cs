@@ -31,9 +31,9 @@ namespace VehicleManagement.Services
             return _mapper.Map<IEnumerable<MaintainanceModel>>(maintainances);
         }
 
-        public async Task<MaintainanceModel> GetMaintainanceByIdAsync(int id)
+        public async Task<MaintainanceModel> GetMaintainanceByIdAsync(Guid id)
         {
-            if (id <= 0)
+            if (id <= null)
             {
                 _logger.LogError("Invalid maintainance id");
                 return null;
@@ -90,9 +90,9 @@ namespace VehicleManagement.Services
             return _mapper.Map<MaintainanceModel>(updatedMaintainance);
         }
 
-        public async Task<bool> DeleteMaintainanceAsync(int id)
+        public async Task<bool> DeleteMaintainanceAsync(Guid id)
         {
-            if (id <= 0)
+            if (id <= null)
             {
                 _logger.LogError("Invalid maintainance id");
                 return false;
@@ -115,7 +115,7 @@ namespace VehicleManagement.Services
         Task<IEnumerable<MaintainanceModel>> GetAllMaintainancesAsync();
 
         // get maintainance by id
-        Task<MaintainanceModel> GetMaintainanceByIdAsync(int id);
+        Task<MaintainanceModel> GetMaintainanceByIdAsync(Guid id);
 
         // create maintainance
         Task<MaintainanceModel> CreateMaintainanceAsync(MaintainanceModel maintainance);
@@ -124,7 +124,7 @@ namespace VehicleManagement.Services
         Task<MaintainanceModel> UpdateMaintainanceAsync(MaintainanceModel maintainance);
 
         // delete maintainance
-        Task<bool> DeleteMaintainanceAsync(int id);
+        Task<bool> DeleteMaintainanceAsync(Guid id);
 
 
     }

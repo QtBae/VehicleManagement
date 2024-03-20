@@ -38,7 +38,7 @@ namespace VehicleManagement.Repositories
             return vehicle;
         }
 
-        public async Task<bool> DeleteVehicleAsync(int id)
+        public async Task<bool> DeleteVehicleAsync(Guid id)
         {
             var vehicle = await _context.Vehicles.FindAsync(id);
             if (vehicle == null)
@@ -71,7 +71,7 @@ namespace VehicleManagement.Repositories
         Task<VehicleEntity> UpdateVehicleAsync(VehicleEntity vehicle);
 
         // delete vehicle
-        Task<bool> DeleteVehicleAsync(int id);
+        Task<bool> DeleteVehicleAsync(Guid id);
 
 
     }

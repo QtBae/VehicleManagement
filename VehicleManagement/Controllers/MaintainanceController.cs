@@ -40,7 +40,7 @@ namespace VehicleManagement.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetMaintainanceByIdAsync(int id)
+        public async Task<IActionResult> GetMaintainanceByIdAsync(Guid id)
         {
             if (id <= 0)
             {
@@ -109,7 +109,7 @@ namespace VehicleManagement.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> DeleteMaintainanceAsync(int id)
+        public async Task<IActionResult> DeleteMaintainanceAsync(Guid id)
         {
             if (id <= 0)
             {
