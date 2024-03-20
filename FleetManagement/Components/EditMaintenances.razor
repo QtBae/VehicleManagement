@@ -1,19 +1,20 @@
-﻿@page "/editmaintenances?{Vehicle}"
+﻿@page "/editmaintenances"
+@page "/editmaintenances/{MaintenanceId}"
 
 <h3>EditMaintenances</h3>
 
 @* form to edit maintenances *@
 
-<EditForm Model="@NewMaintenance" OnValidSubmit="@AddMaintenance">
+<EditForm Model="@Maintenance" >
     <DataAnnotationsValidator />
     <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
 
     <div class="form-group">
         <label for="Work" class="form-label">
             Work
-            <InputTextArea id="Work" @bind-Value="NewMaintenance.Works" />
+            <InputTextArea id="Work" @bind-Value="Maintenance.Works" />
         </label>
-        <ValidationMessage For="@(() => NewMaintenance.Works)" />
+        <ValidationMessage For="@(() => Maintenance.Works)" />
     </div>
 @* 
     <div class="form-group">

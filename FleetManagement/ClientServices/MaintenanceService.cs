@@ -3,9 +3,8 @@ using System.Net.Http.Json;
 
 namespace FleetManagement.ClientServices
 {
-    public class MaintenanceService (HttpClient httpClient,ILogger<IMaintenanceService> logger):IMaintenanceService
+    public class MaintenanceService (HttpClient httpClient,ILogger<MaintenanceService> logger):ServiceBase(httpClient,logger), IMaintenanceService
     {
-        private readonly HttpClient _httpClient= httpClient;
         public async Task<MaintainanceModel?> GetMaintainanceModelByIdAsync(Guid id)
         {
             try
@@ -73,31 +72,28 @@ namespace FleetManagement.ClientServices
         {
             try
             {
-                var response = await _httpClient.PostAsJsonAsync("api/maintenances", maintainanceModel);
+                if (maintainanceModel is not null)
+                {
+                    var response = await _httpClient.PostAsJsonAsync("api/maintenances",maintainanceModel);
 
-                if (response.IsSuccessStatusCode)
-                {
-                    return await response.Content.ReadFromJsonAsync<MaintainanceModel>();
+                    if (response.IsSuccessStatusCode)
+                    {
+                        logger.LogInformation("MaintainanceModel created");
+                        return await response.Content.ReadFromJsonAsync<MaintainanceModel>();
+                    }
+                    else
+                    {
+                        logger.LogInformation("MaintainanceModel not created");
+                        return null;
+                    }
                 }
-                else
-                {
-                    return null;
-                }
+                logger.LogInformation("MaintainanceModel not created");
+                return null;
             }
             catch (Exception)
             {
                 return null;
             }
-        }
-
-        Task<MaintainanceModel> IMaintenanceService.GetMaintainanceModelByIdAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<IEnumerable<MaintainanceModel>> IMaintenanceService.GetMaintainanceModelsAsync(Guid Id)
-        {
-            throw new NotImplementedException();
         }
     }
 

@@ -1,6 +1,12 @@
-﻿<h3>Vehicle Detail</h3>
+﻿@page "/vehicledetail/{Id:guid}"
+
+<h3>Vehicle Detail</h3>
+
+<!-- button to add maintenance -->
+<button class="btn btn-primary" @onclick="() => NavigateToEditMaintance(Vehicle.Maintainances[0].Id)">Add Maintenance</button>
 
 <!-- display vehicle details -->
+
 <div class="row">
     <div class="col-md-12">
         <div class="card">

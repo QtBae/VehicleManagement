@@ -27,10 +27,11 @@ namespace Shared.ApiModels
         [MaxLength(9, ErrorMessage = "License plate must be at most 9 characters long")]
         public string LicensePlate { get; set; }
 
+        [Required(ErrorMessage = "The year is required")]
         public int Year { get; set; }
 
-        [Required(ErrorMessage = "The mileage value must be positive")]
-        [Range(0, int.MaxValue)]
+        [Required(ErrorMessage = "The mileage is required")]
+        [Range(0, int.MaxValue,ErrorMessage = "The mileage value must be positive")]
         public int Mileage { get; set; }
         public Energy Energy { get; set; }
     }
