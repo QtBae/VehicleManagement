@@ -16,7 +16,7 @@ namespace APICleanArchi.Repositories
 
         public async Task<IEnumerable<UserEntity>> GetAllUsersAsync()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users.AsQueryable().Include(u=>u.Gradles).ToListAsync();
         }
 
         public async Task<UserEntity> GetUserByIdAsync(int id)

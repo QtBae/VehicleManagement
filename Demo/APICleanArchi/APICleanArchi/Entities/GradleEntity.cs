@@ -2,12 +2,11 @@
 
 namespace APICleanArchi.Entities
 {
-    public class UserEntity
+    public class GradleEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Email { get; set; }
+        public int UserId { get; set; }
 
-        public IEnumerable<GradleEntity> Gradles { get; set; }
     }
 }

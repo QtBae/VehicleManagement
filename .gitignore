@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/.idea/.idea.VehicleManagement/.idea
+/Demo/APICleanArchi/APICleanArchi/app.db
+*.db
+/Demo/APICleanArchi/APICleanArchi/app.db-shm
+/Demo/APICleanArchi/APICleanArchi/app.db-wal

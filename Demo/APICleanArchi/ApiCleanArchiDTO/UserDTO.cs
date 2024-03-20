@@ -20,5 +20,7 @@ namespace ApiCleanArchiDTO
         [Required]
         [EmailAddress(ErrorMessage = "Invalid email address")]
         public string Email { get; set; }
+
+        public IEnumerable<GradleDTO>? Gradles { get; set; }
     }
 }
