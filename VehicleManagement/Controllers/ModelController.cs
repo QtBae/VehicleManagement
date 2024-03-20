@@ -40,7 +40,7 @@ namespace VehicleManagement.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetCarByIdAsync(int id)
+        public async Task<IActionResult> GetCarByIdAsync(Guid id)
         {
             if (id <= 0)
             {
@@ -109,7 +109,7 @@ namespace VehicleManagement.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> DeleteCarAsync(int id)
+        public async Task<IActionResult> DeleteCarAsync(Guid id)
         {
             if (id <= 0)
             {

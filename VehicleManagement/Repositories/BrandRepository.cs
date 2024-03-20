@@ -18,7 +18,7 @@ namespace VehicleManagement.Repositories
             return await _context.Brands.ToListAsync();
         }
 
-        public async Task<BrandEntity> GetBrandByIdAsync(int id)
+        public async Task<BrandEntity> GetBrandByIdAsync(Guid id)
         {
             return await _context.Brands.FindAsync(id);
         }
@@ -38,7 +38,7 @@ namespace VehicleManagement.Repositories
             return brand;
         }
 
-        public async Task<bool> DeleteBrandAsync(int id)
+        public async Task<bool> DeleteBrandAsync(Guid id)
         {
             var brand = await _context.Brands.FindAsync(id);
             if (brand == null)
@@ -63,7 +63,7 @@ namespace VehicleManagement.Repositories
         Task<IEnumerable<BrandEntity>> GetAllBrandsAsync();
 
         // get  brands by id
-        Task<BrandEntity> GetBrandByIdAsync(int id);
+        Task<BrandEntity> GetBrandByIdAsync(Guid id);
 
         // create brand
         Task<BrandEntity> CreateBrandAsync(BrandEntity brand);
@@ -72,7 +72,7 @@ namespace VehicleManagement.Repositories
         Task<BrandEntity> UpdateBrandAsync(BrandEntity brand);
 
         // delete brand
-        Task<bool> DeleteBrandAsync(int id);
+        Task<bool> DeleteBrandAsync(Guid id);
 
 
     }
