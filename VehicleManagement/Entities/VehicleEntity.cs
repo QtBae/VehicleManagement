@@ -17,6 +17,5 @@ namespace VehicleManagement.Entities
         public int Mileage { get; set; }
         public String Energy { get; set; }
 
-        public int Lateness { get; set; }
     }
 }

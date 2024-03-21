@@ -39,6 +39,10 @@ namespace Shared.ApiModels
         {
             get
             {
+                if(Maintainances == null || !Maintainances.Any() )
+                {
+                    return 0;
+                }
                 return Maintainances.OrderByDescending(m => m.Date).FirstOrDefault().Mileage + Model.MaintenanceFrequency - Mileage;
             }
             set { }

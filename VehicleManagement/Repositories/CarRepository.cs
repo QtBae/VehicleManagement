@@ -15,12 +15,12 @@ namespace VehicleManagement.Repositories
 
         public async Task<IEnumerable<CarEntity>> GetAllCarsAsync()
         {
-            return await _context.Cars.ToListAsync();
+            return await _context.Cars.Include(b => b.Brand).ToListAsync();
         }
 
         public async Task<CarEntity> GetCarByIdAsync(Guid id)
         {
-            return await _context.Cars.FindAsync(id);
+            return await _context.Cars.Include(b => b.Brand).FirstOrDefaultAsync(v => v.Id == id);
         }
 
         public async Task<CarEntity> CreateCarAsync(CarEntity car)
