@@ -13,7 +13,6 @@ namespace VehicleManagementUnitTest
     {
         VehicleModel vehicle;
 
-        // to run before any test
         [SetUp]
         public void Setup()
         {
@@ -31,7 +30,7 @@ namespace VehicleManagementUnitTest
 
 
         [Test]
-        public void AsserLatenessCalculation_IsCorrect()
+        public void Asser_LatenessCalculation_IsCorrect()
         {
             // Arrange
             vehicle.Maintainances.Add(new MaintainanceModel { Mileage = 5000, Date = DateTime.Now });
@@ -42,28 +41,26 @@ namespace VehicleManagementUnitTest
         }
 
         [Test]
-        public void AsserLateness_IsZero_WhenMaintainancesIsNull()
+        public void Asser_LatenessCalculation_IsCorrect_WhenMaintainancesIsNull()
         {
             // Arrange
             vehicle.Maintainances = null;
 
             // Assert
-            Assert.That(vehicle.Lateness,Is.EqualTo(0));
+            Assert.That(vehicle.Lateness,Is.EqualTo(5000));
         }
 
         [Test]
-        public void AsserLateness_IsZero_WhenMaintainancesIsEmpty()
+        public void Asser_LatenessCalculation_IsCorrect_WhenMaintainancesIsEmpty()
         {
             
 
             // Assert
-            Assert.That(vehicle.Lateness,Is.EqualTo(0));
+            Assert.That(vehicle.Lateness,Is.EqualTo(5000));
         }
 
-        // test for license plate length data annotation
-
         [Test]
-        public void AssertLicensePlateLength_IsValid()
+        public void Assert_LicensePlateLength_IsValid()
         {
             
 
@@ -77,7 +74,7 @@ namespace VehicleManagementUnitTest
         }
 
         [Test]
-        public void AssertLicensePlateLength_IsInvalid()
+        public void Assert_LicensePlateLength_IsInvalid()
         {
             // Arrange
             vehicle.LicensePlate = "123";
@@ -93,9 +90,9 @@ namespace VehicleManagementUnitTest
             Assert.That(results.Count, Is.EqualTo(1));
         }
 
-        // test for year range data annotation
+
         [Test]
-        public void AssertYearRange_IsValid()
+        public void Assert_YearRange_IsValid()
         {
             // Arrange
             vehicle.Year = 2020;
@@ -111,7 +108,7 @@ namespace VehicleManagementUnitTest
         }
 
         [Test]
-        public void AssertYearRange_IsInvalid()
+        public void Assert_YearRange_IsInvalid()
         {
             // Arrange
             vehicle.Year = 1800;

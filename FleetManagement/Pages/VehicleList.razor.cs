@@ -40,6 +40,16 @@ namespace FleetManagement.Pages
             _modalRef.Show();
         }
 
+        private async Task DeleteVehicle(VehicleModel vehicle)
+        {
+            var isDeleted=await VehicleServices.DeleteVehicleAsync(vehicle);
+            if (isDeleted)
+            {
+                Vehicles = await VehicleServices.GetAllVehiclesAsync();
+            }
+
+        }
+
         
 
         private Modal _modalRef;

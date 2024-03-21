@@ -65,17 +65,23 @@ namespace FleetManagement.ClientServices
             }
         }
 
-        public async Task<VehicleModel?> DeleteVehicleAsync(VehicleModel? vehicle)
+        public async Task<bool> DeleteVehicleAsync(VehicleModel? vehicle)
         {
             if (vehicle != null)
             {
-                var response = await _httpClient.DeleteAsync($"api/vehicle/{vehicle.Id}");
+                var response = await _httpClient.DeleteAsync($"api/vehicle{vehicle.Id}");
 
-                return response.IsSuccessStatusCode ? vehicle : null;
+                if (!response.IsSuccessStatusCode)
+                {
+                    _logger.LogError($"Error deleting vehicle {vehicle.Id}");
+                    return false;
+                }
+                return true;
             }
             else
             {
-                return null;
+                _logger.LogError("Error deleting vehicle. Vehicle is null");
+                return false;
             }
         }
 
@@ -88,6 +94,6 @@ namespace FleetManagement.ClientServices
         Task<VehicleModel?> AddVehicleAsync(VehicleModel vehicle);
 
         Task<VehicleModel?> UpdateVehicleAsync(VehicleModel vehicle);
-        Task<VehicleModel?> DeleteVehicleAsync(VehicleModel? vehicle);
+        Task<bool> DeleteVehicleAsync(VehicleModel? vehicle);
     }
 }
