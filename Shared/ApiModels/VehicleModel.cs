@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Shared.ApiModels
 {
@@ -14,11 +9,12 @@ namespace Shared.ApiModels
         public CarModel? Model { get; set; }
 
         [Required]
+        [NotEmptyGuid (ErrorMessage = "The model is required")]
         public Guid ModelId { get; set; }
         public List<MaintainanceModel>? Maintainances { get; set; }
 
         [Required]
-
+        [NotEmptyGuid(ErrorMessage = "The brand is required")]
         public Guid BrandId { get; set; }
         public BrandModel? Brand { get; set; }
 
@@ -28,6 +24,7 @@ namespace Shared.ApiModels
         public string LicensePlate { get; set; }
 
         [Required(ErrorMessage = "The year is required")]
+        [Range(1900, 2100, ErrorMessage = "The year must be between 1900 and 2100")]
         public int Year { get; set; }
 
         [Required(ErrorMessage = "The mileage is required")]

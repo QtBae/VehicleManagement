@@ -16,7 +16,7 @@ namespace Shared.ApiModels
         public string ModelName { get; set; }
 
         [Required]
-
+        [NotEmptyGuid(ErrorMessage = "The brand is required")]
         public Guid BrandId { get; set; }
         public BrandModel? Brand { get; set; }
         public int MaintenanceFrequency { get; set; }

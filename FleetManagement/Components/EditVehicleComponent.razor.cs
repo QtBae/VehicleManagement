@@ -34,11 +34,7 @@ namespace FleetManagement.Components
         {
             get
             {
-                if (Vehicle.Brand == null)
-                {
-                    return Guid.Empty;
-                }
-                return Vehicle.Brand.Id;
+                return Vehicle.BrandId;
             }
 
             set
@@ -49,12 +45,18 @@ namespace FleetManagement.Components
         }
         public Guid SelectedModelId
         {
-            get=> Vehicle.Model?.Id ?? Guid.Empty;
+            get=> Vehicle.ModelId;
             set
             {
-                Vehicle!.ModelId = value;
+                Vehicle.ModelId = value;
             }
         }
+
+        //public Guid SelectedBrand
+        //{
+        //    get => Model.BrandId;
+        //    set => Model.BrandId = value;
+        //}
 
         private async Task SaveVehicle()
         {
