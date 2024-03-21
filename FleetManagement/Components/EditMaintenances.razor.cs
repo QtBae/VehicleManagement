@@ -7,10 +7,8 @@ namespace FleetManagement.Components
     public partial class EditMaintenances
     {
         [Inject]
-        public MaintenanceService MaintenanceService { get; set; }
+        public IMaintenanceService MaintenanceService { get; set; }
 
-        [Parameter]
-        public Guid VehicleId { get; set; }
 
         [Parameter]
         public Guid MaintenanceId { get; set; }
@@ -21,15 +19,7 @@ namespace FleetManagement.Components
             Maintenance = MaintenanceId == Guid.Empty ? new MaintainanceModel() : await MaintenanceService.GetMaintainanceModelByIdAsync(MaintenanceId) ?? new MaintainanceModel();
         }
 
-        //protected async  override Task OnParametersSetAsync()
-        //{
-        //    await base.OnParametersSetAsync();
-        //    Maintenance = MaintenanceId == Guid.Empty ? new MaintainanceModel() : await MaintenanceService.GetMaintainanceModelByIdAsync(MaintenanceId)?? new MaintainanceModel();
-        //}
+        
 
-        //protected override Task OnParametersSetAsync()
-        //{
-        //    return base.OnParametersSetAsync();
-        //}
     }
 }

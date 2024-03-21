@@ -3,7 +3,7 @@
 <h3>Vehicle Detail</h3>
 
 <!-- button to add maintenance -->
-<button class="btn btn-primary" @onclick="() => NavigateToEditMaintance(Vehicle.Maintainances[0].Id)">Add Maintenance</button>
+<button class="btn btn-primary" @onclick="() => AddMaintance()">Add Maintenance</button>
 
 <!-- display vehicle details -->
 
@@ -59,4 +59,31 @@
             }
         </div>
     </div>
-    </div>
+</div>
+
+
+
+<Modal @ref=@_modalRef>
+
+    <ModalContent Size="ModalSize.Large" Centered>
+        <ModalHeader>
+            <ModalTitle>Add Maintenance</ModalTitle>
+        </ModalHeader>
+        <ModalBody>
+            <EditForm Model="@Maintenance" OnSubmit="SaveMaintainance">
+                <DataAnnotationsValidator />
+                <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+
+                <div class="form-group">
+                    <label for="Work" class="form-label">
+                        Work
+                        <InputTextArea id="Work" @bind-Value="Maintenance.Works" />
+                    </label>
+                    <ValidationMessage For="@(() => Maintenance.Works)" />
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </EditForm>
+        </ModalBody>
+    </ModalContent>
+
+</Modal>

@@ -22,10 +22,12 @@ namespace VehicleManagement.Data
         override protected void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<VehicleEntity>()
+                
                 .HasMany(v => v.Maintainances)
                 .WithOne()
                 .HasForeignKey(m => m.VehicleId)
                 .OnDelete(DeleteBehavior.Cascade)
+                
                 .IsRequired();
 
             modelBuilder.Entity<BrandEntity>()

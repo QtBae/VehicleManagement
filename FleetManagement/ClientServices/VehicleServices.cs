@@ -23,7 +23,7 @@ namespace FleetManagement.ClientServices
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error getting vehicles from API {ex.Message}");
+                _logger.LogError($"Error getting vehicles from API {ex.Message}");
                 return VehicleData.Instance.VehicleModels.ToList();
             }
         }

@@ -9,7 +9,7 @@ namespace FleetManagement.ClientServices
         {
             try
             {
-                var response = await _httpClient.GetFromJsonAsync<MaintainanceModel>($"api/maintenances/{id}");
+                var response = await _httpClient.GetFromJsonAsync<MaintainanceModel>($"api/maintenance/{id}");
 
                 if (response is not null)
                 {
@@ -25,48 +25,26 @@ namespace FleetManagement.ClientServices
                 return null;
             }
         }
-
-        //public async Task<MaintainanceModel?> GetMaintainanceModelByVehicleIdAsync(Guid vehicleId)
+        //public async Task<IEnumerable<MaintainanceModel?>> GetMaintainanceModelsAsync(Guid Id)
         //{
         //    try
         //    {
-        //        var response = await _httpClient.GetFromJsonAsync<MaintainanceModel>($"api/maintenances/vehicle/{vehicleId}");
+        //        var response = await _httpClient.GetFromJsonAsync<IEnumerable<MaintainanceModel>>($"api/maintenance/{Id}");
 
         //        if (response is not null)
         //        {
-        //            logger.LogInformation("MaintainanceModel found");
+        //            logger.LogInformation("MaintainanceModels found");
         //            return response;
         //        }
-        //        logger.LogInformation("MaintainanceModel not found");
+        //        logger.LogInformation("MaintainanceModels not found");
         //        return null;
         //    }
         //    catch (Exception)
         //    {
-        //        logger.LogError("Error getting MaintainanceModel");
+        //        logger.LogError("Error getting MaintainanceModels");
         //        return null;
         //    }
         //}
-
-        public async Task<IEnumerable<MaintainanceModel?>> GetMaintainanceModelsAsync(Guid Id)
-        {
-            try
-            {
-                var response = await _httpClient.GetFromJsonAsync<IEnumerable<MaintainanceModel>>($"api/maintenances/{Id}");
-
-                if (response is not null)
-                {
-                    logger.LogInformation("MaintainanceModels found");
-                    return response;
-                }
-                logger.LogInformation("MaintainanceModels not found");
-                return null;
-            }
-            catch (Exception)
-            {
-                logger.LogError("Error getting MaintainanceModels");
-                return null;
-            }
-        }
 
         async Task<MaintainanceModel> IMaintenanceService.CreateMaintainanceModelAsync(MaintainanceModel maintainanceModel)
         {
@@ -74,7 +52,7 @@ namespace FleetManagement.ClientServices
             {
                 if (maintainanceModel is not null)
                 {
-                    var response = await _httpClient.PostAsJsonAsync("api/maintenances",maintainanceModel);
+                    var response = await _httpClient.PostAsJsonAsync("api/maintainance",maintainanceModel);
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -101,7 +79,7 @@ namespace FleetManagement.ClientServices
     {
         Task<MaintainanceModel> GetMaintainanceModelByIdAsync(Guid id);
         //Task<MaintainanceModel> GetMaintainanceModelByVehicleIdAsync(Guid vehicleId);
-        Task<IEnumerable<MaintainanceModel>> GetMaintainanceModelsAsync(Guid Id);
+        //Task<IEnumerable<MaintainanceModel>> GetMaintainanceModelsAsync(Guid Id);
         Task<MaintainanceModel> CreateMaintainanceModelAsync(MaintainanceModel maintainanceModel);
 
     }

@@ -1,44 +1,97 @@
-﻿@inject ModelServices ModelService
-
-<h3>ModelListComponent</h3>
+﻿@inject IModelServices ModelService
+@inject IStringLocalizer<ModelListComponent> Localizer
 
 @* display all models in table *@
 
+<Button class="btn btn-primary" @onclick="AddModel">@Localizer["AddModel"]</Button>
+
 <div class="row">
     <table class="table">
-                <thead>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Maintenance Frequency</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (_models != null)
+            {
+                @foreach (var model in _models)
+                {
                     <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Brand</th>
-                        <th>Maintenance Frequency</th>
+                        <td>@model.Id</td>
+                        <td>@model.ModelName</td>
+                        <td>@model.MaintenanceFrequency km</td>
+                        <td>
+                            <button class="btn btn-primary" @onclick="()=>EditModel(model.Id)">Edit</button>
+                            <button class="btn btn-danger" @onclick="()=>DeleteModel(model.Id)">Delete</button>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                @if (_models != null)
-                    {
-                        @foreach (var model in _models)
-                        {
-                            <tr>
-                                <td>@model.Id</td>
-                                <td>@model.ModelName</td>
-                                <td>@model.MaintenanceFrequency</td>
-                                <td>
-                                    <button class="btn btn-primary">Edit</button>
-                                    <button class="btn btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                        }
-                    }
-                    else
-                    {
-                        <p>No models found</p>
-                    }
-                
-                </tbody>
-            </table>
+                }
+            }
+            else
+            {
+                <p>No models found</p>
+            }
+
+        </tbody>
+    </table>
     
 </div>
+
+
+<Modal @ref=@_modalRef>
+
+    <ModalContent Size="ModalSize.Large" Centered>
+        <ModalHeader>
+            <ModalTitle>@Localizer["AddVehicleTitle"]</ModalTitle>
+        </ModalHeader>
+        <ModalBody>
+            <EditForm Model="@Model" OnSubmit=@SaveModel>
+                <DataAnnotationsValidator />
+                <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+
+
+                <div class="form-group">
+                    <label for="Car" class="form-label">
+                        @Localizer["Model"]
+                    </label>
+                    <InputText class="form-control" id="Car" @bind-Value="Model.ModelName" />
+                    <ValidationMessage For="@(() => Model.ModelName)" />
+                </div>
+
+                <div class="form-group">
+                    <label for="Brand">@Localizer["Brand"]</label>
+                    <InputSelect id="Brand" class="form-control" @bind-Value="SelectedBrand">
+                        <option value="">-- Select Brand --</option>
+                        @foreach (var brand in _brands)
+                        {
+                            <option value="@brand.Id">@brand.BrandName</option>
+                        }
+                    </InputSelect>
+                    <ValidationMessage For="@(() => Model.BrandId)" />
+                </div>
+
+
+                <div class="form-group">
+                    <label for="Year">
+                        <strong>
+                            @Localizer["MaintenanceFrequency"]
+                        </strong>
+                    </label>
+                    <InputNumber id="MaintenanceFrequency" class="form-control" @bind-Value="Model.MaintenanceFrequency" />
+                    <ValidationMessage For="@(() => Model.MaintenanceFrequency)" />
+                </div>
+                <Button Type="ButtonType.Submit" class="btn btn-primary form-control">@Localizer["BtnSave"]</Button>
+            </EditForm>
+        </ModalBody>
+
+    </ModalContent>
+
+</Modal>
+
 
 @code {
 
