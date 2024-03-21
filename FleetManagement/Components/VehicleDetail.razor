@@ -1,4 +1,7 @@
 ﻿@page "/vehicledetail/{Id:guid}"
+@using FleetManagement.Pages
+
+@inject IStringLocalizer<VehicleList> Localizer
 
 <h3>Vehicle Detail</h3>
 
@@ -18,41 +21,44 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <p><strong>Brand:</strong> @Vehicle.Brand.BrandName</p>
-                            <p><strong>Model:</strong> @Vehicle.Model.ModelName</p>
+                            <p><strong>Brand:</strong> @Vehicle.Brand?.BrandName</p>
+                            <p><strong>Model:</strong> @Vehicle.Model?.ModelName</p>
                             <p><strong>Year:</strong> @Vehicle.Year</p>
                             <p><strong>Mileage:</strong> @Vehicle.Mileage</p>
+                            <button class="btn btn-primary" @onclick="() => EditVehicle()">Edit</button>
                         </div>
                         <div class="col-md-6">
-                            @if (Vehicle.Maintainances is not null && Vehicle.Maintainances.Any())
-                            {
-                                <h4>Maintenances</h4>
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Works</th>
-                                            <th>Cost</th>
-                                            <th>Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+
+                            <h4>Maintenances</h4>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Works</th>
+                                        <th>Mileage</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Vehicle.Maintainances is not null && Vehicle.Maintainances.Any())
+                                    {
                                         @foreach (var maintenance in Vehicle.Maintainances)
                                         {
                                             <tr>
-                                                <td>@maintenance.Id</td>
                                                 <td>@maintenance.Works</td>
                                                 <td>@maintenance.Mileage</td>
                                                 <td>@maintenance.Date</td>
                                             </tr>
                                         }
-                                    </tbody>
-                                </table>
-                            }
-                            else
-                            {
-                                <p>No maintenances found</p>
-                            }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="3">No maintenance found</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            
                         </div>
                     </div>
                 </div>
@@ -70,20 +76,35 @@
             <ModalTitle>Add Maintenance</ModalTitle>
         </ModalHeader>
         <ModalBody>
-            <EditForm Model="@Maintenance" OnSubmit="SaveMaintainance">
+            <EditForm Model="@Maintenance" OnValidSubmit="SaveMaintainance">
                 <DataAnnotationsValidator />
                 <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
 
                 <div class="form-group">
                     <label for="Work" class="form-label">
                         Work
-                        <InputTextArea id="Work" @bind-Value="Maintenance.Works" />
                     </label>
+                    <InputTextArea class="form-control" id="Work" @bind-Value="Maintenance.Works" />
                     <ValidationMessage For="@(() => Maintenance.Works)" />
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </EditForm>
         </ModalBody>
+    </ModalContent>
+
+</Modal>
+
+
+<Modal @ref=@_modalVehicle>
+
+    <ModalContent Size="ModalSize.Large" Centered>
+        <ModalHeader>
+            <ModalTitle>Add Vehicle Title</ModalTitle>
+        </ModalHeader>
+        <ModalBody>
+            <FleetManagement.Components.EditVehicleComponent Vehicle="Vehicle"  OnSave="VehicleEdited" Localizer="Localizer" />
+        </ModalBody>
+
     </ModalContent>
 
 </Modal>

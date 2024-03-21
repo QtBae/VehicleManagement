@@ -11,6 +11,9 @@ namespace FleetManagement.Pages
         [Inject]
         public IVehicleServices VehicleServices { get; set; }
 
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
+
         public IEnumerable<VehicleModel?> Vehicles { get; set; }= new List<VehicleModel?>();
 
 
@@ -50,7 +53,13 @@ namespace FleetManagement.Pages
 
         }
 
-        
+        private void ShowVehicleDetail(Guid id)
+        {
+            NavigationManager.NavigateTo($"/vehicledetail/{id}");
+        }
+
+
+
 
         private Modal _modalRef;
 

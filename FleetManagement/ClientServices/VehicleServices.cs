@@ -69,7 +69,7 @@ namespace FleetManagement.ClientServices
         {
             if (vehicle != null)
             {
-                var response = await _httpClient.DeleteAsync($"api/vehicle{vehicle.Id}");
+                var response = await _httpClient.DeleteAsync($"api/Vehicle/{vehicle.Id}");
 
                 if (!response.IsSuccessStatusCode)
                 {

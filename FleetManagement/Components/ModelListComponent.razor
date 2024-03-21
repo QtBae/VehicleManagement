@@ -1,9 +1,7 @@
 ﻿@inject IModelServices ModelService
-@inject IStringLocalizer<ModelListComponent> Localizer
 
-@* display all models in table *@
 
-<Button class="btn btn-primary" @onclick="AddModel">@Localizer["AddModel"]</Button>
+<Button class="btn btn-primary" @onclick="AddModel">Add Model</Button>
 
 <div class="row">
     <table class="table">
@@ -46,7 +44,7 @@
 
     <ModalContent Size="ModalSize.Large" Centered>
         <ModalHeader>
-            <ModalTitle>@Localizer["AddVehicleTitle"]</ModalTitle>
+            <ModalTitle>Add Vehicle Title</ModalTitle>
         </ModalHeader>
         <ModalBody>
             <EditForm Model="@Model" OnSubmit=@SaveModel>
@@ -55,15 +53,14 @@
 
 
                 <div class="form-group">
-                    <label for="Car" class="form-label">
-                        @Localizer["Model"]
+                    <label for="Car" class="form-label"> Model
                     </label>
                     <InputText class="form-control" id="Car" @bind-Value="Model.ModelName" />
                     <ValidationMessage For="@(() => Model.ModelName)" />
                 </div>
 
                 <div class="form-group">
-                    <label for="Brand">@Localizer["Brand"]</label>
+                    <label for="Brand">Brand </label>
                     <InputSelect id="Brand" class="form-control" @bind-Value="SelectedBrand">
                         <option value="">-- Select Brand --</option>
                         @foreach (var brand in _brands)
@@ -78,13 +75,13 @@
                 <div class="form-group">
                     <label for="Year">
                         <strong>
-                            @Localizer["MaintenanceFrequency"]
+                            MaintenanceFrequency
                         </strong>
                     </label>
                     <InputNumber id="MaintenanceFrequency" class="form-control" @bind-Value="Model.MaintenanceFrequency" />
                     <ValidationMessage For="@(() => Model.MaintenanceFrequency)" />
                 </div>
-                <Button Type="ButtonType.Submit" class="btn btn-primary form-control">@Localizer["BtnSave"]</Button>
+                <Button Type="ButtonType.Submit" class="btn btn-primary form-control">Save</Button>
             </EditForm>
         </ModalBody>
 

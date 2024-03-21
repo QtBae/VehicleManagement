@@ -100,4 +100,40 @@
   <data name="LateVehicleTitle" xml:space="preserve">
     <value>Liste de véhicules en retard</value>
   </data>
+  <data name="AddVehicleTitle" xml:space="preserve">
+    <value>Editer un Vehicule</value>
+  </data>
+  <data name="Brand" xml:space="preserve">
+    <value>Marque</value>
+  </data>
+  <data name="BtnAddVehicle" xml:space="preserve">
+    <value>Ajouter Un Vehicule</value>
+  </data>
+  <data name="BtnSave" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="HelloBlaz" xml:space="preserve">
+    <value>Bonjour Tout le monde</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Identifant</value>
+  </data>
+  <data name="LP" xml:space="preserve">
+    <value>Immatriculation</value>
+  </data>
+  <data name="Mileage" xml:space="preserve">
+    <value>Retard</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>Modele</value>
+  </data>
+  <data name="VehicleTitle" xml:space="preserve">
+    <value>Liste des voitures</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Année</value>
+  </data>
+  <data name="NoVehicles" xml:space="preserve">
+    <value>Pas de véhicule en retard</value>
+  </data>
 </root>

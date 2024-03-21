@@ -1,4 +1,5 @@
 ﻿using Blazorise;
+using Bogus.DataSets;
 using FleetManagement.ClientServices;
 using Microsoft.AspNetCore.Components;
 using Shared.ApiModels;
@@ -24,9 +25,11 @@ namespace FleetManagement.Components
         public MaintainanceModel Maintenance { get; set; }
 
         private Modal _modalRef;
+        private Modal _modalVehicle;
 
         override protected async Task OnInitializedAsync()
         {
+            Vehicle = new VehicleModel();
             Maintenance = new MaintainanceModel();
             var data = await VehicleService.GetVehicleByIdAsync(Id);
             if (data != null)
@@ -54,14 +57,17 @@ namespace FleetManagement.Components
             await _modalRef.Show();
         }
 
-        //public void NavigateToEditMaintance(Guid id)
-        //{
-        //    NavigationManager.NavigateTo($"/editmaintenances/{id}");
-        //}
+        private async Task EditVehicle()
+        {
+            //Vehicle = await VehicleService.GetVehicleByIdAsync(Id);
+            await _modalVehicle.Show();
+        }
 
-        //public void AddMaintance()
-        //{
-        //    NavigationManager.NavigateTo($"/editmaintenances");
-        //}
+        private async Task VehicleEdited()
+        {
+
+            await _modalVehicle.Hide();
+            Vehicle = await VehicleService.GetVehicleByIdAsync(Vehicle.Id);
+        }
     }
 }

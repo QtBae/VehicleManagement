@@ -28,7 +28,6 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>@Localizer["Id"]</th>
                     <th>@Localizer["Brand"]</th>
                     <th>@Localizer["Model"]</th>
                     <th>@Localizer["Year"]</th>
@@ -38,26 +37,34 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var vehicle in Vehicles)
+                @if (Vehicles.Any())
+                {
+                    @foreach (var vehicle in Vehicles)
+                    {
+                        <tr>
+                            @if (vehicle != null)
+                            {
+                                <td>
+                                    <a href="/vehicledetail/{@vehicle.Id}">@vehicle.Brand.BrandName</a>
+                                </td>
+                                <td>@vehicle.Model.ModelName</td>
+                                <td>@vehicle.Year</td>
+                                <td>@vehicle.LicensePlate</td>
+                                <td>@vehicle.Mileage Km</td>
+                                <td>
+                                    <button class="btn btn-primary" @onclick="() => EditVehicle(vehicle)">Edit</button>
+                                    <button class="btn btn-danger" @onclick="() => DeleteVehicle(vehicle)">Delete</button>
+                                    <button class="btn btn-info" @onclick="() => ShowVehicleDetail(vehicle.Id)">Detail</button>
+                                </td>
+                            }
+
+                        </tr>
+                    }
+                }
+                else
                 {
                     <tr>
-                        @if (vehicle != null)
-                        {
-                            <td>
-                                <a href="/vehicledetail/{@vehicle.Id}">@vehicle.Id</a>
-                            </td>
-                            <td>@vehicle.Brand.BrandName</td>
-                            <td>@vehicle.Model.ModelName</td>
-                            <td>@vehicle.Year</td>
-                            <td>@vehicle.LicensePlate</td>
-                            <td>@vehicle.Mileage</td>
-                            <td>
-                                <button class="btn btn-primary" @onclick="() => EditVehicle(vehicle)">Edit</button>
-                        @* <button class="btn btn-danger" @onclick="() => DeleteVehicle(vehicle.Id)">Delete</button> *@
-                                @* <button class="btn btn-info" @onclick="() => ShowVehicleDetail(vehicle.Id)">Detail</button> *@
-                            </td>
-                        }
-
+                        <td colspan="6">@Localizer["NoVehicles"]</td>
                     </tr>
                 }
             </tbody>

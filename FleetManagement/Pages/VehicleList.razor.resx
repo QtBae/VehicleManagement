@@ -150,4 +150,7 @@
   <data name="Id" xml:space="preserve">
     <value>ID</value>
   </data>
+  <data name="NoVehicles" xml:space="preserve">
+    <value>No Vehicle in database</value>
+  </data>
 </root>

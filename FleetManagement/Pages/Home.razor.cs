@@ -15,7 +15,7 @@ namespace FleetManagement.Pages
 
         protected async override Task OnInitializedAsync()
         {
-            Vehicles = (await VehicleServices.GetAllVehiclesAsync()).AsQueryable().Where(v => v.Lateness > 0);
+            Vehicles = (await VehicleServices.GetAllVehiclesAsync()).AsQueryable().Where(v => v.Lateness < 0);
         }
     }
 }
