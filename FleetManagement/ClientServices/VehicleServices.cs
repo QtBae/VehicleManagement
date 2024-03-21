@@ -53,7 +53,7 @@ namespace FleetManagement.ClientServices
 
         public async Task<VehicleModel?> UpdateVehicleAsync(VehicleModel vehicle)
         {
-            var response = await _httpClient.PutAsJsonAsync($"api/vehicle/{vehicle.Id}", vehicle);
+            var response = await _httpClient.PutAsJsonAsync($"api/vehicle", vehicle);
 
             if (response.IsSuccessStatusCode)
             {

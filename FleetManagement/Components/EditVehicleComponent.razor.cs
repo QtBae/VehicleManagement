@@ -1,4 +1,6 @@
-﻿using FleetManagement.Data;
+﻿using Blazorise;
+using FleetManagement.ClientServices;
+using FleetManagement.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 using Shared;
@@ -8,34 +10,76 @@ namespace FleetManagement.Components
 {
     public partial class EditVehicleComponent
     {
+        [Inject]
+        public IVehicleServices VehicleServices { get; set; }
+
+        [Inject]
+        public IModelServices ModelServices { get; set; }
+        [Inject]
+        public IBrandService BrandService { get; set; }
+
         [Parameter]
         public VehicleModel Vehicle { get; set; }
 
         [Parameter]
         public IStringLocalizer Localizer { get; set; }
+        [Parameter]
+        public Modal ModalRef { get; set; }
+
+        [Parameter]
+        public EventCallback OnSave { get; set; }
 
 
         public Guid SelectedBrandId
         {
-            get => Vehicle.Brand?.Id ?? Guid.Empty;
+            get
+            {
+                if (Vehicle.Brand == null)
+                {
+                    return Guid.Empty;
+                }
+                return Vehicle.Brand.Id;
+            }
+
             set
             {
-                Vehicle!.Brand = Brands.FirstOrDefault(b => b.Id == value);
+                Vehicle!.BrandId = value;
 
             }
         }
-        public Guid SelectedCarId
+        public Guid SelectedModelId
         {
             get=> Vehicle.Model?.Id ?? Guid.Empty;
-            //{
-            //    if (Vehicle.Model != null)
-            //        return Vehicle.Model is not null ? Vehicle.Model.Id : Guid.Empty;
-            //    return Guid.Empty;
-            //}
             set
             {
-                Vehicle!.Model = Cars.FirstOrDefault(c => c.Id == value);
+                Vehicle!.ModelId = value;
             }
+        }
+
+        private async Task SaveVehicle()
+        {
+            if (Vehicle.Id == Guid.Empty)
+            {
+                var response = await VehicleServices.AddVehicleAsync(Vehicle);
+                if (response != null)
+                {
+                    await VehicleServices.GetAllVehiclesAsync();
+                }
+            }
+            else
+            {
+                await VehicleServices.UpdateVehicleAsync(Vehicle);
+            }
+            await OnSave.InvokeAsync();
+        }
+
+        override protected async Task OnInitializedAsync()
+        {
+            Vehicle = Vehicle ?? new VehicleModel();
+            Models = await ModelServices.GetModelsAsync();
+            Brands = await BrandService.GetAllBrandsAsync();
+            await base.OnInitializedAsync();
+
         }
 
         public Energy SelectedEnergy
@@ -45,8 +89,8 @@ namespace FleetManagement.Components
         }
 
 
-        IEnumerable<BrandModel> Brands = VehicleData.GetBrands(10);
-        IEnumerable<CarModel?> Cars = VehicleData.GetCarsModels(10);
+        IEnumerable<BrandModel> Brands = new List<BrandModel>();
+        IEnumerable<CarModel?> Models = new List<CarModel?>();
         List<Energy> Energies = Enum.GetValues<Energy>().ToList();
     }
 }

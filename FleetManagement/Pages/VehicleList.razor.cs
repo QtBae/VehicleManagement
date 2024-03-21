@@ -11,18 +11,27 @@ namespace FleetManagement.Pages
         [Inject]
         public IVehicleServices VehicleServices { get; set; }
 
-        public IEnumerable<VehicleModel?> Vehicles { get; set; }
+        public IEnumerable<VehicleModel?> Vehicles { get; set; }= new List<VehicleModel?>();
 
 
 
         protected override async Task OnInitializedAsync()
         {
+            await base.OnInitializedAsync();
             Vehicles = await VehicleServices.GetAllVehiclesAsync();
         }
 
-        private void AddVehicle(Microsoft.AspNetCore.Components.Web.MouseEventArgs e)
+        private async Task AddVehicle(Microsoft.AspNetCore.Components.Web.MouseEventArgs e)
         {
-            _modalRef.Show();
+            await _modalRef.Show();
+        }
+
+        private async Task VehicleEdited()
+        {
+            
+            await _modalRef.Hide();
+            Vehicle= new VehicleModel();
+            Vehicles = await VehicleServices.GetAllVehiclesAsync();
         }
 
         private void EditVehicle (VehicleModel vehicle)
@@ -31,10 +40,7 @@ namespace FleetManagement.Pages
             _modalRef.Show();
         }
 
-        private void SaveVehicle()
-        {
-            _modalRef.Hide();
-        }
+        
 
         private Modal _modalRef;
 

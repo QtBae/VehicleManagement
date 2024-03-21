@@ -1,5 +1,5 @@
 ﻿
-<EditForm Model="@Vehicle" >
+<EditForm Model="@Vehicle" OnSubmit=@SaveVehicle >
     <DataAnnotationsValidator />
     <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
 
@@ -8,14 +8,14 @@
         <label for="Car" class="form-label">
             @Localizer["Model"]
         </label>
-        <InputSelect class="form-control" id="Car" @bind-Value="SelectedCarId">
+        <InputSelect class="form-control" id="Car" @bind-Value="SelectedModelId">
             <option value="">-- Select Car --</option>
-            @foreach (var car in Cars)
+            @foreach (var Model in Models)
             {
-                <option value="@car.Id">@car.ModelName</option>
+                <option value="@Model.Id">@Model.ModelName</option>
             }
         </InputSelect>
-        <ValidationMessage For="@(() => Vehicle.Model)" />
+        <ValidationMessage For="@(() => Vehicle.BrandId)" />
     </div>
 
     <div class="form-group">
@@ -27,7 +27,7 @@
                 <option value="@brand.Id">@brand.BrandName</option>
             }
         </InputSelect>
-        <ValidationMessage For="@(() => Vehicle.Brand)" />
+        <ValidationMessage For="@(() => Vehicle.BrandId)" />
     </div>
 
     <div class="form-group">
@@ -66,5 +66,5 @@
         <ValidationMessage For="@(() => Vehicle.Mileage)" />
     </div>
 
-    <button type="submit" class="btn btn-primary form-control">@Localizer["BtnSave"]</button>
+    <Button Type="ButtonType.Submit"  class="btn btn-primary form-control" >@Localizer["BtnSave"]</Button>
 </EditForm>
