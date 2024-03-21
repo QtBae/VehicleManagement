@@ -10,13 +10,12 @@ namespace FleetManagement.Pages
         [Inject]
         public IVehicleServices VehicleServices { get; set; }
 
-        public IEnumerable<VehicleModel?> Vehicles { get; set; }
+        public IEnumerable<VehicleModel?> Vehicles { get; set; }= new List<VehicleModel?>();
 
 
-
-        protected override void OnInitialized()
+        protected async override Task OnInitializedAsync()
         {
-            Vehicles = VehicleData.Instance.VehicleModels;
+            Vehicles = (await VehicleServices.GetAllVehiclesAsync()).AsQueryable().Where(v => v.Lateness > 0);
         }
     }
 }
