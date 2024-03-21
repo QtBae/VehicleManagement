@@ -20,7 +20,7 @@ namespace VehicleManagement.Repositories
 
         public async Task<CarEntity> GetCarByIdAsync(Guid id)
         {
-            return await _context.Cars.Include(b => b.Brand).FirstOrDefaultAsync(v => v.Id == id);
+            return await _context.Cars.Include(b => b.Brand).FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task<CarEntity> CreateCarAsync(CarEntity car)
