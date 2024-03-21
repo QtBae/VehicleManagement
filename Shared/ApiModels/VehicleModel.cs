@@ -34,5 +34,14 @@ namespace Shared.ApiModels
         [Range(0, int.MaxValue,ErrorMessage = "The mileage value must be positive")]
         public int Mileage { get; set; }
         public Energy Energy { get; set; }
+
+        public int? Lateness
+        {
+            get
+            {
+                return Maintainances.OrderByDescending(m => m.Date).FirstOrDefault().Mileage + Model.MaintenanceFrequency - Mileage;
+            }
+            set { }
+        }
     }
 }
