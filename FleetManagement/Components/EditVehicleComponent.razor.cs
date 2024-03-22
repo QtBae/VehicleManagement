@@ -10,6 +10,8 @@ namespace FleetManagement.Components
 {
     public partial class EditVehicleComponent
     {
+        #region inject
+
         [Inject]
         public IVehicleServices VehicleServices { get; set; }
 
@@ -17,6 +19,11 @@ namespace FleetManagement.Components
         public IModelServices ModelServices { get; set; }
         [Inject]
         public IBrandService BrandService { get; set; }
+
+        #endregion
+
+
+        #region parameters
 
         [Parameter]
         public VehicleModel Vehicle { get; set; }
@@ -29,34 +36,31 @@ namespace FleetManagement.Components
         [Parameter]
         public EventCallback OnSave { get; set; }
 
+        #endregion
+
+
+        #region properties
 
         public Guid SelectedBrandId
         {
-            get
-            {
-                return Vehicle.BrandId;
-            }
+            get => Vehicle.BrandId;
 
-            set
-            {
-                Vehicle!.BrandId = value;
-
-            }
+            set => Vehicle!.BrandId = value;
         }
         public Guid SelectedModelId
         {
             get=> Vehicle.ModelId;
-            set
-            {
-                Vehicle.ModelId = value;
-            }
+            set => Vehicle.ModelId = value;
+        }
+        public Energy SelectedEnergy
+        {
+            get => Vehicle.Energy;
+            set => Vehicle.Energy = value;
         }
 
-        //public Guid SelectedBrand
-        //{
-        //    get => Model.BrandId;
-        //    set => Model.BrandId = value;
-        //}
+        #endregion
+        
+        #region methods
 
         private async Task SaveVehicle()
         {
@@ -77,24 +81,24 @@ namespace FleetManagement.Components
             await OnSave.InvokeAsync();
         }
 
-        override protected async Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
             Vehicle = Vehicle ?? new VehicleModel();
-            Models = await ModelServices.GetModelsAsync();
-            Brands = await BrandService.GetAllBrandsAsync();
+            _models = await ModelServices.GetModelsAsync();
+            _brands = await BrandService.GetAllBrandsAsync();
             await base.OnInitializedAsync();
 
         }
 
-        public Energy SelectedEnergy
-        {
-            get => Vehicle.Energy;
-            set => Vehicle.Energy = value;
-        }
+       #endregion
 
 
-        IEnumerable<BrandModel> Brands = new List<BrandModel>();
-        IEnumerable<CarModel?> Models = new List<CarModel?>();
-        List<Energy> Energies = Enum.GetValues<Energy>().ToList();
+        #region fields
+
+       IEnumerable<BrandModel?> _brands = new List<BrandModel>();
+       IEnumerable<CarModel?> _models = new List<CarModel?>();
+       List<Energy> _energies = Enum.GetValues<Energy>().ToList();
+
+       #endregion
     }
 }

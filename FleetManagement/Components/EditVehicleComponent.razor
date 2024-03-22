@@ -10,7 +10,7 @@
         </label>
         <InputSelect class="form-control" id="Car" @bind-Value="SelectedModelId">
             <option value="">-- Select Car --</option>
-            @foreach (var Model in Models)
+            @foreach (var Model in _models)
             {
                 <option value="@Model.Id">@Model.ModelName</option>
             }
@@ -22,7 +22,7 @@
         <label for="Brand">@Localizer["Brand"]</label>
         <InputSelect id="Brand" class="form-control" @bind-Value="SelectedBrandId">
             <option value="">-- Select Brand --</option>
-            @foreach (var brand in Brands)
+            @foreach (var brand in _brands)
             {
                 <option value="@brand.Id">@brand.BrandName</option>
             }
@@ -34,7 +34,7 @@
         <label for="Energy">@Localizer["Energy"]</label>
         <InputSelect id="Energy" class="form-control" @bind-Value="SelectedEnergy">
             <option value="">-- Select Energy --</option>
-            @foreach (var energy in Energies)
+            @foreach (var energy in _energies)
             {
                 <option value="@energy">@energy</option>
             }
