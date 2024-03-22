@@ -4,20 +4,12 @@
 # Car Management Dot Net App
 
 ### Table des matières
-- 👉[Liens Vers Application Hébergée](https://github.com/Jael-dev/VehicleManagement?tab=readme-ov-file#liens-vers-application-h%C3%A9berg%C3%A9e) 
 - 👉[Fonctionalités](https://github.com/Jael-dev/VehicleManagement?tab=readme-ov-file#fonctionnalit%C3%A9s) 
 - 👉[Structure du Projet](https://github.com/Jael-dev/VehicleManagement?tab=readme-ov-file#structure-du-projet) 
 - 👉[Installation](https://github.com/Jael-dev/VehicleManagement?tab=readme-ov-file#installation) 
 - 👉[Contribution](https://github.com/Jael-dev/VehicleManagement?tab=readme-ov-file#contribution) 
 - 👉[License](https://github.com/Jael-dev/VehicleManagement?tab=readme-ov-file#licence) 
 
-
----
-
-## Liens Vers Application Hébergée
-
-- Blazor:
-- Api:
 
 ---
 
