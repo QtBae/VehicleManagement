@@ -98,6 +98,7 @@ namespace VehicleManagementUnitTest
             Assert.IsNotEmpty(results);
             Assert.AreEqual("The mileage is required", results[0].ErrorMessage);
         }
+    }
 
         // Add tests for other properties (Date, VehicleId) similarly
     }
