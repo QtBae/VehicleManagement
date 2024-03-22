@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "FleetManagement",
   "resources": {
-    "hash": "sha256-3EMIfzuJzIeQUwQNJAMIOvijWRRAP1LIwNgV27AegTc=",
+    "hash": "sha256-v3G3qZ5GYHC3ZbJ9VmU4Gb4g1VEVXO16NZiynvbu7Y0=",
     "jsModuleNative": {
       "dotnet.native.8.0.3.wzxwl5s97r.js": "sha256-D4sYBYmDfH/YekgYRgX959/2RG6k28sJSHmcsn+iikk="
     },
@@ -21,7 +21,7 @@
       "Blazorise.wasm": "sha256-c2EPb0Jl0ocgnyTFnDqQ51lS6BpRvwPXF/7/61OYtZg=",
       "Bogus.wasm": "sha256-hifXV6dFEcqQ2Sx11IHFbQvkVtwEQzUu1m6EoSZBM+Y=",
       "DeepCloner.wasm": "sha256-JFrc0XdxhCpcC/rNoZ4sGLtZTNiex5j561fsLJEixRY=",
-      "FleetManagement.wasm": "sha256-karbTWdpS2RXRPoxZO2lINc2kB5CBRBXaAbKgJRG/V0=",
+      "FleetManagement.wasm": "sha256-FAiGfpSQ7BdJKeMbsmOGuwt+Di+ggkygTyx7uRIUAnQ=",
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-BUh4KCE3MDOvnB20aGvIi7wRqym7pGNeAV4BRDYrU4w=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-VMUVO4Xab82CiNaSXYJPRnr6MKG22lwlMYaS1yxG3h4=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-ElJj1GvB2pNd+3VVfzRt85t+H9x8ARlRWzq31mz8dfU=",
@@ -44,7 +44,7 @@
       "Microsoft.JSInterop.wasm": "sha256-6Qq8pA+ILAsFop+1I9K307iIqKaOI5fxwKCvm5Y0R7M=",
       "Microsoft.JSInterop.WebAssembly.wasm": "sha256-2UBM9/bu7xO14FDEreNbNSMdEh8/FUuiewHRjTGo5Bw=",
       "netstandard.wasm": "sha256-NXQ8tbDAniKqWYNlaRHwqUpZJvourDlFIlno/PYfGnA=",
-      "Shared.wasm": "sha256-kvAym0okEKr6f29dZGKpS1NEosxIyi07obpsWLCf/B4=",
+      "Shared.wasm": "sha256-3zaq1Aoj+4OQsHXq5Oa9llfxCnaYHs26HmRnmOwf/gg=",
       "SQLitePCLRaw.core.wasm": "sha256-5ncp/PNVntosOHmUwpvRVJZvvreYP08nlkqD9XgBkdA=",
       "System.Collections.Concurrent.wasm": "sha256-y+GGEFXVpaFddJHol+IqguhUPN+8kMNEdh7CLo/7Vh4=",
       "System.Collections.Immutable.wasm": "sha256-Wt9Jh5wvS9hNWcsFhkjE1seUpVkTNnFaNtNHax79ctI=",
@@ -95,7 +95,7 @@
     },
     "satelliteResources": {
       "fr": {
-        "FleetManagement.resources.wasm": "sha256-UdqBZHXiuwh6nCeGhlwKnb0acCKbLHJI8ZVbYSmX3Lc="
+        "FleetManagement.resources.wasm": "sha256-1IPMmWrLJXcY6izqV0oU7dOlC7mBWQZcRzNbPb6eDEc="
       }
     }
   },

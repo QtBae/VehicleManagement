@@ -65,7 +65,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-cum1tP4\/QrMz3n99z+2h+r1JbaC\/zgKX6I6zzbgQ0FE=",
+      "hash": "sha256-EZ1rxK7ZL6Oh0s6NiLne+lBghBrkz1V3pshei8hGxkQ=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -93,7 +93,7 @@
       "url": "_framework\/DeepCloner.wasm"
     },
     {
-      "hash": "sha256-karbTWdpS2RXRPoxZO2lINc2kB5CBRBXaAbKgJRG\/V0=",
+      "hash": "sha256-FAiGfpSQ7BdJKeMbsmOGuwt+Di+ggkygTyx7uRIUAnQ=",
       "url": "_framework\/FleetManagement.wasm"
     },
     {
@@ -185,7 +185,7 @@
       "url": "_framework\/netstandard.wasm"
     },
     {
-      "hash": "sha256-kvAym0okEKr6f29dZGKpS1NEosxIyi07obpsWLCf\/B4=",
+      "hash": "sha256-3zaq1Aoj+4OQsHXq5Oa9llfxCnaYHs26HmRnmOwf\/gg=",
       "url": "_framework\/Shared.wasm"
     },
     {
@@ -377,7 +377,7 @@
       "url": "_framework\/System.wasm"
     },
     {
-      "hash": "sha256-UdqBZHXiuwh6nCeGhlwKnb0acCKbLHJI8ZVbYSmX3Lc=",
+      "hash": "sha256-1IPMmWrLJXcY6izqV0oU7dOlC7mBWQZcRzNbPb6eDEc=",
       "url": "_framework\/fr\/FleetManagement.resources.wasm"
     },
     {
@@ -545,5 +545,5 @@
       "url": "_content\/Blazorise\/vendors\/sha512.js"
     }
   ],
-  "version": "FziqLlUY"
+  "version": "JGco7aSg"
 };
