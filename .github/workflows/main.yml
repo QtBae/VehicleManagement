@@ -20,7 +20,7 @@ jobs:
               run: dotnet workload restore
             
             - name: Publish .NET Core Project
-              run: dotnet publish FleetManagement/FleetManagement.csproj -c Release -o release --nologo
+              run: dotnet publish VehicleManagement/FleetManagement.csproj -c Release -o release --nologo
 
             - name: copy index.html to 404.html
               run: cp release/wwwroot/index.html release/wwwroot/404.html
