@@ -1,4 +1,4 @@
-![GitHub Logo]([/images/logo.png](https://github.com/Jael-dev/VehicleManagement/blob/master/intro%20Readme.png))
+![GitHub Logo](https://github.com/Jael-dev/VehicleManagement/assets/77239264/34a2c2f6-b29b-452c-ab77-e2a9f6b3d260)
 
 
 # Car Management Dot Net App
@@ -29,11 +29,11 @@ Notre solution est constitué de 4 projets principaux structurés comme suit
 - VehicleManagement: Ce projet contient toute la logique de l’application. Des controlleurs aux entités, tout est défini ici.
 - VehicleManagementUnitTest: Ce projet contient tous les tests unitaires de notre projet.
 
-![Screenshot 2024-03-22 092914.png](Car%20Management%20Dot%20Net%20App%20b282072fc5194c66a5ca9dfb1ac89a43/Screenshot_2024-03-22_092914.png)
+<img width="403" alt="projstruct" src="https://github.com/Jael-dev/VehicleManagement/assets/77239264/25bd6989-252e-4392-be4d-e17c71714ed5">
 
 ### 1 - FleetManagement
 
-![Screenshot 2024-03-22 092931.png](Car%20Management%20Dot%20Net%20App%20b282072fc5194c66a5ca9dfb1ac89a43/Screenshot_2024-03-22_092931.png)
+<img width="400" alt="fleetstruct" src="https://github.com/Jael-dev/VehicleManagement/assets/77239264/651f2a29-2c96-4b70-8895-5eeafb0b0d5b">
 
 ### 2 - Shared
 
@@ -491,12 +491,13 @@ Les dossiers important de cette structure sont:
     ```
     
 
-![Screenshot 2024-03-22 092956.png](Car%20Management%20Dot%20Net%20App%20b282072fc5194c66a5ca9dfb1ac89a43/Screenshot_2024-03-22_092956.png)
+<img width="402" alt="vehiclestruc" src="https://github.com/Jael-dev/VehicleManagement/assets/77239264/4303224b-9b6d-491b-b675-f9b03943fa23">
+
 
 ### 4 - VehicleManagementUnitTest
 
 Les tests sont utilisées pour vérifier la conformité aux différentes regles métier. 
-
+<img width="403" alt="teststruct" src="https://github.com/Jael-dev/VehicleManagement/assets/77239264/1e01ca87-ee9b-40a4-a509-29a0aa9f30a1">
 ```csharp
 using Shared.ApiModels;
 using System;
