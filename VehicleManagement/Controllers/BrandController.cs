@@ -6,7 +6,7 @@ using VehicleManagement.Services;
 
 namespace VehicleManagement.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Brand")]
     [ApiController]
     public class BrandController : ControllerBase
     {
