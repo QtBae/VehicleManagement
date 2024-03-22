@@ -11,7 +11,7 @@ using Microsoft.JSInterop;
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
-
+    
 builder.Services.AddSingleton(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7177/") });
 
 builder.Services.AddBlazorise(options =>
@@ -26,10 +26,8 @@ builder.Services.AddScoped<IModelServices, ModelServices>();
 builder.Services.AddScoped<IMaintenanceService, MaintenanceService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
 
-//await builder.Build().RunAsync();
 
 builder.Services.AddLocalization();
-//builder.Services.AddHttpClient<ServiceBase>(service=>service.BaseAddress = new Uri(""));
 
 var host = builder.Build();
 
