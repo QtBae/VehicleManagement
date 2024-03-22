@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace VehicleManagement.Entities
+﻿namespace VehicleManagement.Entities
 {
     public class CarEntity
     {

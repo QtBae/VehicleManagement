@@ -1,4 +1,7 @@
+using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using System.Reflection;
 using VehicleManagement.Data;
 using VehicleManagement.Profiles;
 using VehicleManagement.Repositories;
@@ -15,7 +18,13 @@ builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1",new() { Title = "VehicleManagement",Version = "v1" });
+    string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    string xmlPath = Path.Combine(AppContext.BaseDirectory,xmlFile);
+    c.IncludeXmlComments(xmlPath);
+});
 
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<ICarService, CarService>();
@@ -35,7 +44,11 @@ builder.Services.AddAutoMapper(typeof(CarProfile));
 builder.Services.AddAutoMapper(typeof(VehicleProfile));
 builder.Services.AddAutoMapper(typeof(MaintainanceProfile));
 
+builder.Services.AddFluentValidationRulesToSwagger();
+
 builder.Services.AddCors();
+
+//configure swagger for api documentation in xml file
 
 
 var app = builder.Build();

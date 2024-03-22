@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.ApiModels;
+using Swashbuckle.AspNetCore.Annotations;
 using VehicleManagement.Services;
 
 namespace VehicleManagement.Controllers
@@ -35,6 +36,13 @@ namespace VehicleManagement.Controllers
             return Ok(brands);
         }
 
+
+        /// <summary>
+        /// Get a brand by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+
         [HttpGet("{id}")]
         [ActionName("GetBrandByIdAsync")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -56,6 +64,11 @@ namespace VehicleManagement.Controllers
             return Ok(brand);
         }
 
+        /// <summary>
+        /// Create a new brand
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -80,6 +93,11 @@ namespace VehicleManagement.Controllers
             return CreatedAtAction("GetBrandByIdAsync", new { id = createdBrand.Id }, createdBrand);
         }
 
+        /// <summary>
+        /// Update a brand
+        /// </summary>
+        /// <param name="brand"></param>
+        /// <returns></returns>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -105,6 +123,11 @@ namespace VehicleManagement.Controllers
             return Ok(updatedBrand);
         }
 
+        /// <summary>
+        /// Delete a brand
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

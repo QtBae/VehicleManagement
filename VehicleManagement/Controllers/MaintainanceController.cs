@@ -35,6 +35,11 @@ namespace VehicleManagement.Controllers
             return Ok(maintainances);
         }
 
+        /// <summary>
+        /// Get a maintainance by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         [ActionName("GetMaintainanceByIdAsync")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -56,6 +61,11 @@ namespace VehicleManagement.Controllers
             return Ok(maintainance);
         }
 
+        /// <summary>
+        /// Create a new maintainance
+        /// </summary>
+        /// <param name="maintainance"></param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -80,6 +90,11 @@ namespace VehicleManagement.Controllers
             return CreatedAtAction("GetMaintainanceByIdAsync", new { id = createdMaintainance.Id }, createdMaintainance);
         }
 
+        /// <summary>
+        /// Update a maintainance
+        /// </summary>
+        /// <param name="maintainance"></param>
+        /// <returns></returns>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -105,6 +120,11 @@ namespace VehicleManagement.Controllers
             return Ok(updatedMaintainance);
         }
 
+        /// <summary>
+        /// Delete a maintainance
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

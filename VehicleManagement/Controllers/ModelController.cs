@@ -35,6 +35,11 @@ namespace VehicleManagement.Controllers
             return Ok(cars);
         }
 
+        /// <summary>
+        /// Get a model by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         [ActionName("GetCarByIdAsync")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -56,6 +61,11 @@ namespace VehicleManagement.Controllers
             return Ok(car);
         }
 
+        /// <summary>
+        /// Create a new model
+        /// </summary>
+        /// <param name="car"></param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -80,6 +90,11 @@ namespace VehicleManagement.Controllers
             return CreatedAtAction("GetCarByIdAsync", new { id = createdCar.Id }, createdCar);
         }
 
+        /// <summary>
+        /// Update a model
+        /// </summary>
+        /// <param name="car"></param>
+        /// <returns></returns>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -105,6 +120,11 @@ namespace VehicleManagement.Controllers
             return Ok(updatedCar);
         }
 
+        /// <summary>
+        /// Delete a model
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

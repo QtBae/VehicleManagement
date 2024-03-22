@@ -35,6 +35,11 @@ namespace VehicleManagement.Controllers
             return Ok(vehicles);
         }
 
+        /// <summary>
+        /// Get a vehicle by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         [ActionName("GetVehicleByIdAsync")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -56,6 +61,11 @@ namespace VehicleManagement.Controllers
             return Ok(vehicle);
         }
 
+        /// <summary>
+        /// create a vehicle
+        /// </summary>
+        /// <param name="vehicle"></param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -80,6 +90,11 @@ namespace VehicleManagement.Controllers
             return CreatedAtAction("GetVehicleByIdAsync", new { id = createdVehicle.Id }, createdVehicle);
         }
 
+        /// <summary>
+        /// Update a vehicle
+        /// </summary>
+        /// <param name="vehicle"></param>
+        /// <returns></returns>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -108,6 +123,11 @@ namespace VehicleManagement.Controllers
             return Ok(updatedVehicle);
         }
 
+        /// <summary>
+        /// Delete a vehicle
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
