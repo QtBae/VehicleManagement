@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Shared.ApiModels
 {
@@ -11,18 +6,18 @@ namespace Shared.ApiModels
     {
         public Guid Id { get; set; }
 
-        [Required]
+        [Required (ErrorMessage = "The works are required")]
         public string Works { get; set; }
 
-        [Required]
-        [Range(0, int.MaxValue)]
+        [Required (ErrorMessage = "The mileage is required")]
+        [Range(0, int.MaxValue, ErrorMessage = "The mileage value must be positive")]
         public int Mileage { get; set; }
 
-        [Required]
-        [DataType(DataType.Date)]
+        [Required (ErrorMessage = "The date is required")]
+        [DataType(DataType.Date , ErrorMessage = "The date is not valid")]
         public DateTime Date { get; set; }
 
-        [Required]
+        [Required (ErrorMessage = "The vehicle is required")]
         public Guid VehicleId { get; set; }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Shared.ApiModels
 {
@@ -11,7 +6,7 @@ namespace Shared.ApiModels
     {
         public Guid Id { get; set; }
 
-        [Required]
+        [Required (ErrorMessage = "The model name is required")]
         [MinLength(1, ErrorMessage = "The model name should be atleast 1 charater")]
         public string ModelName { get; set; }
 

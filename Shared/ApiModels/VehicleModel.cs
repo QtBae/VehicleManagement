@@ -18,7 +18,7 @@ namespace Shared.ApiModels
         public Guid BrandId { get; set; }
         public BrandModel? Brand { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "The license plate is required")]
         [MinLength(7, ErrorMessage = "License plate must be at least 7 characters long")]
         [MaxLength(9, ErrorMessage = "License plate must be at most 9 characters long")]
         public string LicensePlate { get; set; }
