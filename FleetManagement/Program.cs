@@ -35,7 +35,7 @@ CultureInfo culture;
 var js = host.Services.GetRequiredService<IJSRuntime>();
 var result = await js.InvokeAsync<string>("blazorCulture.get");
 
-if (result != null)
+if (result is not null)
 {
     culture = new CultureInfo(result);
 }

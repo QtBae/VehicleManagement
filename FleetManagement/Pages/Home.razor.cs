@@ -13,7 +13,7 @@ namespace FleetManagement.Pages
         public IEnumerable<VehicleModel?> Vehicles { get; set; }= new List<VehicleModel?>();
 
 
-        protected async override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
             Vehicles = (await VehicleServices.GetAllVehiclesAsync()).AsQueryable().Where(v => v.Lateness < 0);
         }

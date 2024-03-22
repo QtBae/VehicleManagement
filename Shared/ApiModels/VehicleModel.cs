@@ -42,7 +42,6 @@ namespace Shared.ApiModels
                 }
                 return Maintainances.OrderByDescending(m => m.Date).FirstOrDefault().Mileage + Model.MaintenanceFrequency - Mileage;
             }
-            set { }
         }
     }
 }

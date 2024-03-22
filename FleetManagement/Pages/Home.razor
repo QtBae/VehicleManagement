@@ -6,14 +6,11 @@
 
 <h1>@Localizer["LateVehicleTitle"]</h1>
 
-@* <FleetManagement.Components.VehicleListComponent/> *@
-
 <div class="row">
     <div class="col-md-12">
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>@Localizer["Id"]</th>
                     <th>@Localizer["Brand"]</th>
                     <th>@Localizer["Model"]</th>
                     <th>@Localizer["Year"]</th>
@@ -30,9 +27,8 @@
                             @if (vehicle != null)
                             {
                                 <td>
-                                    <a href="/vehicledetail/{@vehicle.Id}">@vehicle.Id</a>
+                                    <a href="/vehicledetail/{@vehicle.Id}">@vehicle.Brand.BrandName</a>
                                 </td>
-                                <td>@vehicle.Brand.BrandName</td>
                                 <td>@vehicle.Model.ModelName</td>
                                 <td>@vehicle.Year</td>
                                 <td>@vehicle.LicensePlate</td>

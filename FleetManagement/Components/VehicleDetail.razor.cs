@@ -27,7 +27,9 @@ namespace FleetManagement.Components
         private Modal _modalRef;
         private Modal _modalVehicle;
 
-        override protected async Task OnInitializedAsync()
+        #region methods
+
+        protected override async Task OnInitializedAsync()
         {
             Vehicle = new VehicleModel();
             Maintenance = new MaintainanceModel();
@@ -41,7 +43,7 @@ namespace FleetManagement.Components
         private async Task SaveMaintainance()
         {
             var data =await MaintenanceService.CreateMaintainanceModelAsync(Maintenance);
-            Vehicle = await VehicleService.GetVehicleByIdAsync(Id);
+            Vehicle = (await VehicleService.GetVehicleByIdAsync(Id))!;
             Maintenance = new MaintainanceModel();
             await _modalRef.Hide();
         }
@@ -59,7 +61,6 @@ namespace FleetManagement.Components
 
         private async Task EditVehicle()
         {
-            //Vehicle = await VehicleService.GetVehicleByIdAsync(Id);
             await _modalVehicle.Show();
         }
 
@@ -67,7 +68,9 @@ namespace FleetManagement.Components
         {
 
             await _modalVehicle.Hide();
-            Vehicle = await VehicleService.GetVehicleByIdAsync(Vehicle.Id);
+            Vehicle = (await VehicleService.GetVehicleByIdAsync(Vehicle.Id))!;
         }
+
+        #endregion
     }
 }

@@ -5,11 +5,11 @@ namespace FleetManagement.ClientServices
 {
     public class ModelServices(HttpClient httpClient,ILogger<ModelServices> logger):ServiceBase(httpClient,logger), IModelServices
     {
-        public async Task<List<CarModel>> GetModelsAsync()
+        public async Task<List<CarModel?>> GetModelsAsync()
         {
             try
             {
-                var models = await _httpClient.GetFromJsonAsync<List<CarModel>>("api/model");
+                List<CarModel?>? models = await _httpClient.GetFromJsonAsync<List<CarModel>>("api/model");
 
                 if (models != null) return models;
                 logger.LogError("Failed to retrieve models");
@@ -37,7 +37,7 @@ namespace FleetManagement.ClientServices
             }
         }
 
-        public async Task<CarModel?> AddModel(CarModel model)
+        public async Task<CarModel?> AddModel(CarModel? model)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace FleetManagement.ClientServices
             }
         }
 
-        public async Task<CarModel?> UpdateModel(CarModel model)
+        public async Task<CarModel?> UpdateModel(CarModel? model)
         {
             try
             {
@@ -99,11 +99,11 @@ namespace FleetManagement.ClientServices
 
     public interface IModelServices
     {
-        Task<List<CarModel>> GetModelsAsync();
+        Task<List<CarModel?>> GetModelsAsync();
 
         Task<CarModel> GetModelAsync(Guid id);
-        Task<CarModel?> AddModel(CarModel model);
-        Task<CarModel?> UpdateModel(CarModel model);
+        Task<CarModel?> AddModel(CarModel? model);
+        Task<CarModel?> UpdateModel(CarModel? model);
         Task DeleteModel(Guid id);
 
     }

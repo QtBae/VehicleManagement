@@ -73,9 +73,7 @@ namespace FleetManagement.Components
                 }
             }
             else
-            {
-                Vehicle.Model = null;
-                Vehicle.Brand = null;   
+            { 
                 await VehicleServices.UpdateVehicleAsync(Vehicle);
             }
             await OnSave.InvokeAsync();

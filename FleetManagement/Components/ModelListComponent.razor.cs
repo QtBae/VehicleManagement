@@ -7,26 +7,33 @@ namespace FleetManagement.Components
 {
     public partial class ModelListComponent
     {
-        private List<CarModel> _models = [];
+        #region fireld
+
+        private List<CarModel?> _models = [];
         
-        private List<BrandModel> _brands = [];
+        private List<BrandModel?> _brands = [];
+        private Modal _modalRef;
+
+        #endregion
 
         [Inject]
-        public IBrandService BrandService { get; set; }
+        public IBrandService? BrandService { get; set; }
 
 
         [Parameter]
-        public CarModel Model { get; set; }
+        public CarModel? Model { get; set; }
 
-        private Modal _modalRef;
+        
 
         public Guid SelectedBrand
         {
-            get => Model.BrandId;
-            set => Model.BrandId = value;
+            get => Model!.BrandId;
+            set => Model!.BrandId = value;
         }
 
-        
+
+        #region methods
+
         protected override async Task OnInitializedAsync()
         {
             Model ??= new CarModel();
@@ -36,7 +43,7 @@ namespace FleetManagement.Components
 
         private async Task SaveModel()
         {
-            if (Model.Id == Guid.Empty)
+            if (Model!.Id == Guid.Empty)
             {
                 var response = await ModelService.AddModel(Model);
                 if (response is not null)
@@ -70,5 +77,7 @@ namespace FleetManagement.Components
             await ModelService.DeleteModel(id);
             _models = await ModelService.GetModelsAsync();
         }
+
+        #endregion
     }
 }

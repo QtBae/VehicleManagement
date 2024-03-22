@@ -95,6 +95,9 @@ namespace VehicleManagement.Controllers
             {
                 return BadRequest(ModelState);
             }
+            
+            vehicle.Model = null;
+            vehicle.Brand = null;
 
             var updatedVehicle = await _vehicleService.UpdateVehicleAsync(vehicle);
             if (updatedVehicle == null)

@@ -1,6 +1,5 @@
 ﻿using Blazorise;
 using FleetManagement.ClientServices;
-using FleetManagement.Data;
 using Microsoft.AspNetCore.Components;
 using Shared.ApiModels;
 
@@ -15,6 +14,10 @@ namespace FleetManagement.Pages
         public NavigationManager NavigationManager { get; set; }
 
         public IEnumerable<VehicleModel?> Vehicles { get; set; }= new List<VehicleModel?>();
+        
+        private Modal _modalRef;
+
+        VehicleModel Vehicle = new VehicleModel();
 
 
 
@@ -57,13 +60,6 @@ namespace FleetManagement.Pages
         {
             NavigationManager.NavigateTo($"/vehicledetail/{id}");
         }
-
-
-
-
-        private Modal _modalRef;
-
-        VehicleModel Vehicle = new VehicleModel();
 
 
 
